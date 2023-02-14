@@ -104,12 +104,12 @@ def message_content_loop(directory, queue, configurer):
             ldict[name] = extra_links
 
 
-    datafile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/message_content.json", "w", encoding="utf-8" )  # opening json file for writing
+    datafile = open( "/root/EmailParser/EmailParser/In-Process-JSONS/message_content.json", "w", encoding="utf-8" )  # opening json file for writing
     json.dump( mdict, datafile, indent=4,
                separators=(',', ': ') )  # printing data in nice format to file
     datafile.close()  # Closing File
 
-    datafile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/extra_links.json", "w", encoding="utf-8" )  # opening json file for writing
+    datafile = open( "/root/EmailParser/EmailParser/In-Process-JSONS/extra_links.json", "w", encoding="utf-8" )  # opening json file for writing
     json.dump( ldict, datafile, indent=4,
                separators=(',', ': ') )  # printing data in nice format to file
     datafile.close()  # Closing File

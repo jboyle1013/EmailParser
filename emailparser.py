@@ -19,7 +19,7 @@ def emailparser():
     listener = multiprocessing.Process(target=listener_process, args=(queue, listener_configurer))
     listener.start()
     # creating thread
-    directory = "/home/kali/email-data/data/mail-data/uaapii.com/"
+    directory = "//email-analysis-data/new-emails"
     file_reset(directory)
     p1 = multiprocessing.Process(target=headers_loop, args=(directory, queue, worker_configurer,)) # Header Parsing Process
     p2 = multiprocessing.Process(target=message_content_loop, args=(directory, queue, worker_configurer,))    # Content Parsing Process
