@@ -76,7 +76,7 @@ def headers_loop(directory, queue, configurer):
 
 
     emails_list.append(total)  # Adds totals to final data list
-    datafile = open("In-Process-JSONS/data.json", "w", encoding="utf-8")  # opening json file for writing
+    datafile = open("/home/kali/Documents/EmailParser/In-Process-JSONS/data.json", "w", encoding="utf-8")  # opening json file for writing
     json.dump(emails_list, datafile, indent=4)  # printing data in nice format to file
     datafile.close()  # closing file
     logger.info( "Header Parsing Complete" )

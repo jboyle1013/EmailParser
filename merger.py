@@ -10,7 +10,7 @@ def merger(queue, configurer):
     if not os.path.exists( f"FinalDataBase" ):  # Does the Directory already path exist?
         os.mkdir( f"FinalDataBase/" )  # Make directory path
 
-    datafile = open( "In-Process-JSONS/data.json", "r" )  # opening json file for reading
+    datafile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/data.json", "r" )  # opening json file for reading
     final_data = json.load( datafile )  # Reads from file
     datafile.close()  # Closes File
 
