@@ -22,7 +22,7 @@ def headers_loop(directory, queue, configurer):
         print( file_str )  # Used to keep track of progress
         name = file_str
 
-        mb = mailbox.maildir(file_name, factory=BytesParser(policy=default).parse)  # Reading in mbox file
+        mb = mailbox.Maildir(file_name, factory=BytesParser(policy=default).parse)  # Reading in mbox file
         mblen = len(mb)  # number of messages
         '''This sections checks for and handles multiple runs.'''
         if mblen == 0 and run_num == 0:
@@ -60,7 +60,7 @@ def headers_loop(directory, queue, configurer):
         """ This section is making sure the dictionary is formatted properly """
         inboxdict["Name"] = name
         inboxdict["Inbox Number"] = num_inboxes  # Adding the inbox numver to inbox dict
-        inboxdict["Number Of Messages"] = message_num - 1
+        inboxdict["Number Of Messages"] = final_num + message_num - 1
         inboxdict["Message List"] = msg_list  # adding inbox messages to inboxdict
         emails_list.append(inboxdict)  # adding inbox to emails list
         num_inboxes = num_inboxes + 1  # keeping track of number of inboxes

@@ -14,27 +14,27 @@ def merger(queue, configurer):
     final_data = json.load( datafile )  # Reads from file
     datafile.close()  # Closes File
 
-    mcdatafile = open( "In-Process-JSONS/message_content.json", "r" )  # opening json file for reading
+    mcdatafile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/message_content.json", "r" )  # opening json file for reading
     mc_data = json.load( mcdatafile )  # Reads from file
     mcdatafile.close()  # Closes File
 
-    madatafile = open( "In-Process-JSONS/message_attachments.json", "r" )  # opening json file for reading
+    madatafile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/message_attachments.json", "r" )  # opening json file for reading
     ma_data = json.load( madatafile )  # Reads from file
     madatafile.close()  # Closes File
 
-    htmldatafile = open( "In-Process-JSONS/MessageLinks.json", "r" )  # opening json file for reading
+    htmldatafile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/MessageLinks.json", "r" )  # opening json file for reading
     html_data = json.load( htmldatafile )  # Reads from file
     htmldatafile.close()  # Closes File
 
-    extra_linksfile = open( "In-Process-JSONS/extra_links.json", "r" )  # opening json file for reading
+    extra_linksfile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/extra_links.json", "r" )  # opening json file for reading
     extra_links = json.load( extra_linksfile )  # Reads from file
     extra_linksfile.close()  # Closes File
 
-    inbox_idsfile = open( "In-Process-JSONS/inbox_ids.json", "r" )  # opening json file for reading
+    inbox_idsfile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/inbox_ids.json", "r" )  # opening json file for reading
     inbox_ids = json.load( inbox_idsfile )  # Reads from file
     inbox_idsfile.close()  # Closes File
 
-    datafile = open( "In-Process-JSONS/inbox_vals.json", "r" )  # opening json file for reading
+    datafile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/inbox_vals.json", "r" )  # opening json file for reading
     inbox_vals = json.load( datafile )  # Reads from file
     datafile.close()
     run_count = file_getruncount()  # This tells us how many times this program has been run
@@ -171,7 +171,7 @@ def merger(queue, configurer):
     new_run_count = run_count + 1
     inbox_vals["Run Count"] = new_run_count
 
-    datafile = open( "In-Process-JSONS/inbox_vals.json", "w" )  # opening json file for reading
+    datafile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/inbox_vals.json", "w" )  # opening json file for reading
     json.dump( inbox_vals, datafile, indent=4 )
     datafile.close()
     logger.info( "Parsing Complete." )

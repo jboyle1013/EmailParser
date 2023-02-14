@@ -33,7 +33,7 @@ def message_attachment_loop(directory, queue, configurer):
 
         name = file_str
 
-        mb = mailbox.maildir( file_name, factory=BytesParser( policy=default ).parse )  # Reading in mbox file
+        mb = mailbox.Maildir( file_name, factory=BytesParser( policy=default ).parse )  # Reading in mbox file
         mblen = len( mb )  # number of messages
         '''This sections checks for and handles multiple runs.'''
         if mblen == 0 and run_num == 0:
@@ -62,7 +62,7 @@ def message_attachment_loop(directory, queue, configurer):
             mdict[name] = ms_dict
 
 
-    datafile = open( "In-Process-JSONS/message_attachments.json", "w",
+    datafile = open( "/home/kali/Documents/EmailParser/In-Process-JSONS/message_attachments.json", "w",
                      encoding="utf-8" )  # opening json file for writing
     json.dump( mdict, datafile, indent=4,
                separators=(',', ': ') )  # printing data in nice format to file
