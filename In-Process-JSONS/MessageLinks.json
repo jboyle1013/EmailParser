@@ -1,0 +1,64 @@
+{
+    "placeholder": {
+        "Message Number 1:": {
+            "Links": {
+                "Website": [],
+                "Image": [],
+                "Video": [],
+                "Duplicates": {
+                    "Website Count": 0,
+                    "Image Count": 0,
+                    "Video Count": 0,
+                    "Website": [],
+                    "Image": [],
+                    "Video": []
+                }
+            }
+        },
+        "Message Number 2:": {
+            "Links": {
+                "Website": [],
+                "Image": [],
+                "Video": [],
+                "Duplicates": {
+                    "Website Count": 0,
+                    "Image Count": 0,
+                    "Video Count": 0,
+                    "Website": [],
+                    "Image": [],
+                    "Video": []
+                }
+            }
+        },
+        "Message Number 3:": {
+            "Links": {
+                "Website": [],
+                "Image": [],
+                "Video": [],
+                "Duplicates": {
+                    "Website Count": 0,
+                    "Image Count": 0,
+                    "Video Count": 0,
+                    "Website": [],
+                    "Image": [],
+                    "Video": []
+                }
+            }
+        },
+        "Message Number 4:": {
+            "Links": {
+                "Website": [],
+                "Image": [],
+                "Video": [],
+                "Duplicates": {
+                    "Website Count": 0,
+                    "Image Count": 0,
+                    "Video Count": 0,
+                    "Website": [],
+                    "Image": [],
+                    "Video": []
+                }
+            }
+        }
+    }
+}

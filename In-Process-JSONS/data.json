@@ -1,0 +1,206 @@
+[
+    {
+        "Name": "placeholder",
+        "Inbox Number": 1,
+        "Number Of Messages": 3,
+        "Message List": [
+            {
+                "Number": 1,
+                "Headers": {
+                    "Date": "Wed, 16 Nov 2022 09:03:59 -0500",
+                    "Received": [
+                        "from mail.uaapii.com\tby mail.uaapii.com with LMTP\tid 5UkqJ/rtdGNBBQAAyTb5jQ\t(envelope-from <justinmp@vt.edu>)\tfor <placeholder@uaapii.com>; Wed, 16 Nov 2022 14:04:42 +0000",
+                        "from mail-pg1-f174.google.com (mail-pg1-f174.google.com [209.85.215.174])\tby mail.uaapii.com (Postfix) with ESMTP id 85251151D\tfor <placeholder@uaapii.com>; Wed, 16 Nov 2022 14:04:42 +0000 (UTC)",
+                        "by mail-pg1-f174.google.com with SMTP id o13so16726520pgu.7        for <placeholder@uaapii.com>; Wed, 16 Nov 2022 06:04:42 -0800 (PST)"
+                    ],
+                    "Subject": "test",
+                    "From": "Justin Perez <justinmp@vt.edu>",
+                    "To": "placeholder@uaapii.com",
+                    "DKIM-signature": "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=vt-edu.20210112.gappssmtp.com; s=20210112;        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject         :date:message-id:reply-to;        bh=n01kBqbDWVaO3HDgDblCYl5fsiZ/niEsDfGU8NpZBtQ=;        b=0jTe6rpQ3AvAs2/H+p9ZmUaFNAbZQw0mcf3dl+C7DP1d31Jf8GqHUbPymBJIFPBH/A         8TaTGlJkD4VreUespP8FSF+D3NFIJTc0RP52HlwfKneIbb9OYxKSNasHzsfVc0LJL4yo         trRIlKdhkUgbq8Lpy0YcvrhxtTtfuSt/h5PYGD0u7gx+m4Q+V1F1z+I6i0xW4GsDZPvU         yL684jnliO5892btBKBEtnvuUePvh7T9E6ar3lg5UVc8Hitl9fSOu0OMUGwlfMDDfvhd         EkLHxMNCEpS3ZDfvBaEtexIhw7ueBgt6FQsrDXBrCtUB2Ek+FChqFtmKeEBQo76y+qSk         +GKg==",
+                    "Message-ID": "<CAH2OeQ9PeW83evQ4=QEQwppTonbmCe6rh8MBAZCipj59tRABvg@mail.gmail.com>",
+                    "Mime-Version": "1.0",
+                    "Content-Type": "multipart/alternative",
+                    "All Others": {
+                        "Return-Path": [
+                            "<justinmp@vt.edu>"
+                        ],
+                        "Delivered-To": [
+                            "placeholder@uaapii.com"
+                        ],
+                        "Received-SPF": [
+                            "Pass (mailfrom) identity=mailfrom; client-ip=209.85.215.174; helo=mail-pg1-f174.google.com; envelope-from=justinmp@vt.edu; receiver=<UNKNOWN> "
+                        ],
+                        "Authentication-Results": [
+                            "mail.uaapii.com; dmarc=pass (p=none dis=none) header.from=vt.edu"
+                        ],
+                        "X-Google-DKIM-Signature": [
+                            "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20210112;        h=to:subject:message-id:date:from:mime-version:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=n01kBqbDWVaO3HDgDblCYl5fsiZ/niEsDfGU8NpZBtQ=;        b=VXg6V3CclrmhjdlczSWWEgiOSKM/h8f2/HDT/jHSFiHlEGGlDizeW8wGBwjQsZoRvk         YrcOYRoEgTzeqk0kJY7hMEIDIdnGVZScYsxKNBhpl5ExCqQNn5OFnGTjetvyggSmKlfc         S2jU4cFwnJ+ruZa3m6t0gVT0614gwZXDfClUPigqbBb+hOtxkqfCdCorB8/aIN6xC4vl         l5MeSSkuZBFqVQadQfzJwoDkJJAfeYaL+yvhJIdiC7ZAv+oHzw5EUL9sIZJkz/K5RNQK         bnFK3gfLePYmjTBl1fGy7ZGMQXRnljea6KiGZsEm+JmNnVV1hfFNkj4B/PzGInJ9ybw4         eyRA=="
+                        ],
+                        "X-Gm-Message-State": [
+                            "ANoB5pmV8LaqLyY1al4qXT1V4Zr7b5UWnUH+97upRcI+Ufqq9D/XoZaj\tp0o3PTU6MQUSdHORLBwGA4NMc6NJyG9hz1KO1LKSuQST/g/zSw=="
+                        ],
+                        "X-Google-Smtp-Source": [
+                            "AA0mqf6Je3zGnjm1Fu9tfbTMmhBfS7zW89HptRUA9kiPOx8vaZMjAhUrEz6/alejSZch8+q2+ReCYG8LgqPLicy1BhE="
+                        ],
+                        "X-Received": [
+                            "by 2002:a63:185c:0:b0:452:8774:d5ab with SMTP id 28-20020a63185c000000b004528774d5abmr20872573pgy.74.1668607475481; Wed, 16 Nov 2022 06:04:35 -0800 (PST)"
+                        ],
+                        "Content-Transfer-Encoding": [
+                            "quoted-printable"
+                        ]
+                    }
+                },
+                "Content": {}
+            },
+            {
+                "Number": 2,
+                "Headers": {
+                    "Date": "Wed, 25 Jan 2023 16:51:26 -0500",
+                    "Received": [
+                        "from mail.uaapii.com\tby mail.uaapii.com with LMTP\tid qAGoOoek0WOUhBkAyTb5jQ\t(envelope-from <jboyle1013@vt.edu>)\tfor <placeholder@uaapii.com>; Wed, 25 Jan 2023 21:52:07 +0000",
+                        "from mail-qv1-f46.google.com (mail-qv1-f46.google.com [209.85.219.46])\tby mail.uaapii.com (Postfix) with ESMTP id D5B681884\tfor <placeholder@uaapii.com>; Wed, 25 Jan 2023 21:52:07 +0000 (UTC)",
+                        "by mail-qv1-f46.google.com with SMTP id w15so58375qvs.11        for <placeholder@uaapii.com>; Wed, 25 Jan 2023 13:52:07 -0800 (PST)"
+                    ],
+                    "Subject": "test2",
+                    "From": "Jordan Boyle <jboyle1013@vt.edu>",
+                    "To": "placeholder@uaapii.com",
+                    "DKIM-signature": "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=vt-edu.20210112.gappssmtp.com; s=20210112;        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject         :date:message-id:reply-to;        bh=gzUFSVtBtaJO8HJPvoFFCvAikgHUFYJXJEPuNcvofuQ=;        b=PAErjQUPHJ81ZEqxx9elEH7nGkwz8D+DIQ79c3pEmwdGArqV91jHRVbieK3s82Mzzj         qwv89uoqb1Qrjbz1XXTMolpAu+Wo53qEhYZTMkCPbTxNJU5jzS1fRVLEwouRlCu8GWU0         PIL2TrHjT71gOzY6SxOOPSUUG3ZBNeqqnrn+yDlGIniM5nO+V0CZ09XkR32OePvWttQR         WvnY/F+VA6je0Bv1eUUTd8IYObVcdeCYq0Td4bqeTJ9l0X0YEmz4EaAO5r5hCZ7dRIPP         5Ylcmng72/6lLFKBcI6/2e6ifJYMSBkybm2f4sQAK986jLZXkuJCNQjMWzPodQaM2PQy         GGbg==",
+                    "Message-ID": "<CAPC0fUOcFQo15cGHsxL6V7C4C_Yi8nRdtYpvrSx8e4779bX_VA@mail.gmail.com>",
+                    "Mime-Version": "1.0",
+                    "Content-Type": "multipart/alternative",
+                    "All Others": {
+                        "Return-Path": [
+                            "<jboyle1013@vt.edu>"
+                        ],
+                        "Delivered-To": [
+                            "placeholder@uaapii.com"
+                        ],
+                        "Received-SPF": [
+                            "Pass (mailfrom) identity=mailfrom; client-ip=209.85.219.46; helo=mail-qv1-f46.google.com; envelope-from=jboyle1013@vt.edu; receiver=<UNKNOWN> "
+                        ],
+                        "Authentication-Results": [
+                            "mail.uaapii.com; dmarc=pass (p=none dis=none) header.from=vt.edu"
+                        ],
+                        "X-Google-DKIM-Signature": [
+                            "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20210112;        h=to:subject:message-id:date:from:mime-version:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=gzUFSVtBtaJO8HJPvoFFCvAikgHUFYJXJEPuNcvofuQ=;        b=tguaxfBHjXv7jmb6Bk677XikpKvUluLspJNzs7StyCYZ+h9DkMCgBkVvNYnydv+9SU         d+fZt2fQfkdhJIJljq78g2eWbkxPNe0WrW6nohBsXMjR2GkPT3hkhj5tdu5/sncIybjS         pfLQUi6Y3pFqej7MEQWnKCMkOCMQwScM2feeZY5DBqm++QWYkq5Mo96C/93Naf/ULE42         PXD4GxJ5lcs5yInfmvzMXSFweIgOQB+n+B6g+j0cOyUnBbAVtjKXbgoeIPBVahRKDTzu         AI48NSf1Pfz9Wu5jKfGE0hZMN7/5qr0gsH+njxQ0VBkQJIg0mIUUWDTyaFvbRF0+BYvj         PpJg=="
+                        ],
+                        "X-Gm-Message-State": [
+                            "AFqh2koVmileRuDmTu8wdpsxu7XBYWkduzd7Hw9Wv4bbqHV0Smm/dysx\tf7rHgUloGJZ3tVeZ8LyOQ/4LjYL0YMjjUa/XlCqJ59vHMbJGDA=="
+                        ],
+                        "X-Google-Smtp-Source": [
+                            "AMrXdXtIlNjgN2SpHoj+xGEzyYGR5Dt3PVW78gbH7seOQvuPQ4bRnI89JJWxj7taw+ljtcyLMAeIyAYJcZAwYWzylxg="
+                        ],
+                        "X-Received": [
+                            "by 2002:a05:6214:4189:b0:52c:4ccc:5f7f with SMTP id ld9-20020a056214418900b0052c4ccc5f7fmr2145309qvb.27.1674683521302; Wed, 25 Jan 2023 13:52:01 -0800 (PST)"
+                        ],
+                        "Content-Transfer-Encoding": [
+                            "quoted-printable"
+                        ]
+                    }
+                },
+                "Content": {}
+            },
+            {
+                "Number": 3,
+                "Headers": {
+                    "Date": "Wed, 25 Jan 2023 16:51:01 -0500",
+                    "Received": [
+                        "from mail.uaapii.com\tby mail.uaapii.com with LMTP\tid ogzrCnCk0WOUhBkAyTb5jQ\t(envelope-from <jboyle1013@vt.edu>)\tfor <placeholder@uaapii.com>; Wed, 25 Jan 2023 21:51:44 +0000",
+                        "from mail-qk1-f179.google.com (mail-qk1-f179.google.com [209.85.222.179])\tby mail.uaapii.com (Postfix) with ESMTP id DD2121883\tfor <placeholder@uaapii.com>; Wed, 25 Jan 2023 21:51:43 +0000 (UTC)",
+                        "by mail-qk1-f179.google.com with SMTP id x26so44756qkj.4        for <placeholder@uaapii.com>; Wed, 25 Jan 2023 13:51:43 -0800 (PST)"
+                    ],
+                    "Subject": "test1",
+                    "From": "Jordan Boyle <jboyle1013@vt.edu>",
+                    "To": "placeholder@uaapii.com",
+                    "DKIM-signature": "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=vt-edu.20210112.gappssmtp.com; s=20210112;        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject         :date:message-id:reply-to;        bh=Bw5dpr8xsNAx3m/54GRYahZfiG6ZJ2EkjJIk00ZvNb8=;        b=RflN6V29BAmJLFXrFPWRbvbBoV2peBHmKVcB2A3SNG2Xmrvlsgf7/R007hcq3HSDRS         V8kkG0u6oXy5pH8SWfZf0JGpvXJa/SX8Lkb5HRtJux+Od8W37AER6hl2ey+4VrNAKdNk         zCPQy5+T3/qDhe4UO4z7cRVXqCVFFLLVDfyDUIm3nPmlBsHbTYuQWOTXVCC6IX1oyyjS         LEZWUMb01DFN8IReYGCRnqssR4XmB8pOiVm81cG3tmY/qbQum3cuwqBawWkbEb2nBTSZ         Myf6Qus0OdtbalK1svnnWvU46pnJWwlRA014d34m2gX8p9R4gI+36rX+Wjo11CeOxbPN         X8RA==",
+                    "Message-ID": "<CAPC0fUOm=3xG4zmehzm94vkg9OjmDb3Qa0MbAPGTW=qS=kHJbw@mail.gmail.com>",
+                    "Mime-Version": "1.0",
+                    "Content-Type": "multipart/alternative",
+                    "All Others": {
+                        "Return-Path": [
+                            "<jboyle1013@vt.edu>"
+                        ],
+                        "Delivered-To": [
+                            "placeholder@uaapii.com"
+                        ],
+                        "Received-SPF": [
+                            "Pass (mailfrom) identity=mailfrom; client-ip=209.85.222.179; helo=mail-qk1-f179.google.com; envelope-from=jboyle1013@vt.edu; receiver=<UNKNOWN> "
+                        ],
+                        "Authentication-Results": [
+                            "mail.uaapii.com; dmarc=pass (p=none dis=none) header.from=vt.edu"
+                        ],
+                        "X-Google-DKIM-Signature": [
+                            "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20210112;        h=to:subject:message-id:date:from:mime-version:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=Bw5dpr8xsNAx3m/54GRYahZfiG6ZJ2EkjJIk00ZvNb8=;        b=MLleWYKd/+iByDVwarFcezgv23To6zuoOoo07bbkzXC+U8NvZOx1THLEVVjZXY3JGh         pnBx/74U730/N5WxBrTmU4X1HgtImKAPyNMOnTrP3mkGJs8iW1QzCXG8rs5sHH3GZH9n         9iURDZe97RDQDhFH+TyX6eU+EiV1ubbFwYguWc8aXJInfWVMByBdFLy/Ug4P/9t5Sh7O         bkTd/ltRHfpQfwXCUrP1pRYoxsgPRlWvR5NwZEda3vSmb8agIUg2JLBEp97vbnV5mIr6         SGLoeOEh7u+U+1I+tPF5B9R9WSX+AuYsYBl79w6VRirxN+9r3aN149JHGsOjEeyseuiP         qHXA=="
+                        ],
+                        "X-Gm-Message-State": [
+                            "AFqh2ko9xrVx+eKSISp3/wyOy7Lllc6Ojhfl2BjW/b0m/3sLOdCe6ztE\tOMlbPKvfymbi3aMImSxz083sQwl7loBov3zqdt6cEMPvO7VJ0w=="
+                        ],
+                        "X-Google-Smtp-Source": [
+                            "AMrXdXtoO0vebHEGYD7V3FV0cEFUkm2zlHb05XBbYZg/W6BMBQwG8Puz3PkEuUIIDsmjTIHag7Dd3cy2EqlkXbUNVqs="
+                        ],
+                        "X-Received": [
+                            "by 2002:a05:620a:68d:b0:705:749e:b6ed with SMTP id f13-20020a05620a068d00b00705749eb6edmr2150799qkh.77.1674683496711; Wed, 25 Jan 2023 13:51:36 -0800 (PST)"
+                        ],
+                        "Content-Transfer-Encoding": [
+                            "quoted-printable"
+                        ]
+                    }
+                },
+                "Content": {}
+            },
+            {
+                "Number": 4,
+                "Headers": {
+                    "Date": "Wed, 25 Jan 2023 16:51:57 -0500",
+                    "Received": [
+                        "from mail.uaapii.com\tby mail.uaapii.com with LMTP\tid QMyFJ7ek0WOUhBkAyTb5jQ\t(envelope-from <jboyle1013@vt.edu>)\tfor <placeholder@uaapii.com>; Wed, 25 Jan 2023 21:52:55 +0000",
+                        "from mail-qk1-f174.google.com (mail-qk1-f174.google.com [209.85.222.174])\tby mail.uaapii.com (Postfix) with ESMTP id 85E7916E9\tfor <placeholder@uaapii.com>; Wed, 25 Jan 2023 21:52:55 +0000 (UTC)",
+                        "by mail-qk1-f174.google.com with SMTP id x26so46087qkj.4        for <placeholder@uaapii.com>; Wed, 25 Jan 2023 13:52:55 -0800 (PST)"
+                    ],
+                    "Subject": "\ud83d\ude0e\ud83d\ude03",
+                    "From": "Jordan Boyle <jboyle1013@vt.edu>",
+                    "To": "placeholder@uaapii.com",
+                    "DKIM-signature": "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=vt-edu.20210112.gappssmtp.com; s=20210112;        h=to:subject:message-id:date:from:mime-version:from:to:cc:subject         :date:message-id:reply-to;        bh=6mj2Z+KKbhOAf4hx3tH/3LkKIRaQSsyFh92Fy89u6/E=;        b=DqMl2msRuginDm0bz+nL/5l2RO3G6jU0DJYclNxLx99lJJ+Qa7hhsRDcnWTwYz6/R0         y3WpuQ5NEtjBK6uRU6/5K/ZD3MVx7nwbtNCw3KNPxKRwGVbktyCDZCGRAdAL7zckfQJ+         Nc/zhKbX9XHQhCow1JVB+4aY6NBvSTa1lL9FiXaxVVYk8GBeheBkRhyBuS5MpGm2NC+i         gYnfFaDWPLlZ8k7vX9H9yA32AW/4PQ7+GWfwqz9CCQdFkUgncqLSVRSTsLeAcecM8Dal         xyC7bac2/GL9X6oNI1+FYxB8iI76M/YKA/OMA7duL+RbnMLhWd8dMfUiwXBhcbdHyQtg         t2zw==",
+                    "Message-ID": "<CAPC0fUPdweNPjsNbftiURd=f=Y=ZyPMB329Y1vsX8BghCvYb7g@mail.gmail.com>",
+                    "Mime-Version": "1.0",
+                    "Content-Type": "multipart/alternative",
+                    "All Others": {
+                        "Return-Path": [
+                            "<jboyle1013@vt.edu>"
+                        ],
+                        "Delivered-To": [
+                            "placeholder@uaapii.com"
+                        ],
+                        "Received-SPF": [
+                            "Pass (mailfrom) identity=mailfrom; client-ip=209.85.222.174; helo=mail-qk1-f174.google.com; envelope-from=jboyle1013@vt.edu; receiver=<UNKNOWN> "
+                        ],
+                        "Authentication-Results": [
+                            "mail.uaapii.com; dmarc=pass (p=none dis=none) header.from=vt.edu"
+                        ],
+                        "X-Google-DKIM-Signature": [
+                            "v=1; a=rsa-sha256; c=relaxed/relaxed;        d=1e100.net; s=20210112;        h=to:subject:message-id:date:from:mime-version:x-gm-message-state         :from:to:cc:subject:date:message-id:reply-to;        bh=6mj2Z+KKbhOAf4hx3tH/3LkKIRaQSsyFh92Fy89u6/E=;        b=RSVPSeIt+h8ULGR2fYx8KrDHP1lZlwdk4YYBDEovqaicoQoETw8nX36GFqiDEpqIP4         RmRjBmHqn1MbRMIkwTPyPROagQyVLX1qOnjYqR9qpnjh8INBewr+gPkurYPp16oVpyOm         8pvSnqsA/+2bbIgYjBsuFV158Eh/vkmkxgnafxgWl3vowrjj0jSq0c6HOiivWYd7Ztba         QhrGpm6WqcE9TkSjoIbYOvanfHODNCRvjD9Se+UFEhtCUPHIRj0nGunMiImIj8qMHAnj         KDa40hhcaRqHcjKCnPesTiGZ4k9K55FlIy05Ex5B/fBALKfQrFYg62WZ2NxrzK7DiBXO         LlZw=="
+                        ],
+                        "X-Gm-Message-State": [
+                            "AFqh2kpf8Zbe58WcL3fclcX0lJtjsjEFJMoqFFGZElL44B5zR6dAPHp6\tFlLgWvoN4l/UYKqMeDGz7xSukU3tmG5xOIFJBW+YSC8WT3+RKw=="
+                        ],
+                        "X-Google-Smtp-Source": [
+                            "AMrXdXvqxny9w9F9JGD24m18eihTSAhJNj3LK8X0MKEre4aKN1j+IDexzFZg5gU33BhbNUc2XEyjb10Y8XqEF2r/nXc="
+                        ],
+                        "X-Received": [
+                            "by 2002:a05:620a:809:b0:705:aff7:33aa with SMTP id s9-20020a05620a080900b00705aff733aamr1270733qks.432.1674683568919; Wed, 25 Jan 2023 13:52:48 -0800 (PST)"
+                        ],
+                        "Content-Transfer-Encoding": [
+                            "base64",
+                            "quoted-printable"
+                        ]
+                    }
+                },
+                "Content": {}
+            }
+        ]
+    },
+    {
+        "Total Number of Emails": 4,
+        "Total Number of Inboxes": 1
+    }
+]
