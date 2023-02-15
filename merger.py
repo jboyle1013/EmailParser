@@ -7,37 +7,38 @@ def merger(queue, configurer):
     configurer( queue )
     logger = logging.getLogger()
     logger.info( "Merging Begins" )
-    if not os.path.exists( f"FinalDataBase" ):  # Does the Directory already path exist?
-        os.mkdir( f"FinalDataBase/" )  # Make directory path
+    run_count = file_getruncount()
+    if not os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/" ):  # Does the Directory already path exist?
+        os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/" )  # Make directory path
 
-    datafile = open( "In-Process-JSONS/data.json", "r" )  # opening json file for reading
+    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/data.json", "r" )  # opening json file for reading
     final_data = json.load( datafile )  # Reads from file
     datafile.close()  # Closes File
 
-    mcdatafile = open( "In-Process-JSONS/message_content.json", "r" )  # opening json file for reading
+    mcdatafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/message_content.json", "r" )  # opening json file for reading
     mc_data = json.load( mcdatafile )  # Reads from file
     mcdatafile.close()  # Closes File
 
-    madatafile = open( "In-Process-JSONS/message_attachments.json", "r" )  # opening json file for reading
+    madatafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/message_attachments.json", "r" )  # opening json file for reading
     ma_data = json.load( madatafile )  # Reads from file
     madatafile.close()  # Closes File
 
-    htmldatafile = open( "In-Process-JSONS/MessageLinks.json", "r" )  # opening json file for reading
+    htmldatafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/MessageLinks.json", "r" )  # opening json file for reading
     html_data = json.load( htmldatafile )  # Reads from file
     htmldatafile.close()  # Closes File
 
-    extra_linksfile = open( "In-Process-JSONS/extra_links.json", "r" )  # opening json file for reading
+    extra_linksfile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/extra_links.json", "r" )  # opening json file for reading
     extra_links = json.load( extra_linksfile )  # Reads from file
     extra_linksfile.close()  # Closes File
 
-    inbox_idsfile = open( "In-Process-JSONS/inbox_ids.json", "r" )  # opening json file for reading
+    inbox_idsfile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/inbox_ids.json", "r" )  # opening json file for reading
     inbox_ids = json.load( inbox_idsfile )  # Reads from file
     inbox_idsfile.close()  # Closes File
 
-    datafile = open( "In-Process-JSONS/inbox_vals.json", "r" )  # opening json file for reading
+    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/inbox_vals.json", "r" )  # opening json file for reading
     inbox_vals = json.load( datafile )  # Reads from file
     datafile.close()
-    run_count = file_getruncount()  # This tells us how many times this program has been run
+      # This tells us how many times this program has been run
     for i, inbox in enumerate( final_data ):  # Loops through final data dictionary
         links_added = 0
         name = final_data[i].get( "Name" )  # Pulls name of Inbox Owner
@@ -91,9 +92,11 @@ def merger(queue, configurer):
                                 "Image Count" ) + 1
 
                 message["Content"]["Has Attachment"] = ma_data[name].get( f'Message Number {_ + message_num}:' )
+                if ma_data[name].get(f'Message Number {_ + message_num}:'):
+                    message["Content"]["Attachment Name"] = ma_data[name].get( f'Message Number {_ + message_num} Attachment Name:' )
         if name != "None":
-            if not os.path.exists( f"FinalDataBase/{name}" ):  # Does the Directory already path exist?
-                os.mkdir( f"FinalDataBase/{name}" )  # Make directory path
+            if not os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}" ):  # Does the Directory already path exist?
+                os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}" )  # Make directory path
     print( "Writing to final files" )
     logger.info( "Writing to final files" )
 
@@ -101,9 +104,9 @@ def merger(queue, configurer):
         name = dicts.get( "Name" )  # Pulls name of Inbox Owner
         print( name )
         if name is None:  # Precaution to Skip final Total Count Dictionary
-            if not os.path.exists( f"FinalDataBase/Totals" ):
-                os.mkdir( f"FinalDataBase/Totals" )
-            datafile = open( f"FinalDataBase/Totals/totals.json", "w" )  # opening json file for writing
+            if not os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/Totals" ):
+                os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/Totals" )
+            datafile = open( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/Totals/totals.json", "w" )  # opening json file for writing
             json.dump( dicts, datafile, indent=4, separators=(',', ': ') )  # printing data in nice format to file
             datafile.close()  # Closing File
         else:
@@ -115,8 +118,8 @@ def merger(queue, configurer):
                 "Number Of Messages": message_num + dicts.get( "Number Of Messages" ) if run_count > 1 else dicts.get( "Number Of Messages" )
             }
 
-            if not os.path.exists( f"FinalDataBase/{name}/InboxInfo" ):  # Does the Directory already path exist?
-                os.mkdir( f"FinalDataBase/{name}/InboxInfo" )  # Make directory path
+            if not os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/InboxInfo" ):  # Does the Directory already path exist?
+                os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/InboxInfo" )  # Make directory path
 
             filename = "FinalDataBase/" + name + "/InboxInfo/" + name + "info" + ".json"
             with open( filename, "w" ) as datafile:  # opening json file for writing
@@ -124,8 +127,8 @@ def merger(queue, configurer):
                            separators=(',', ': ') )  # printing data in nice format to file
                 datafile.close()  # Closing File
 
-            if not os.path.exists( f"FinalDataBase/{name}/Messages" ):  # Does the Directory already path exist?
-                os.mkdir( f"FinalDataBase/{name}/Messages" )  # Make directory path
+            if not os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Messages" ):  # Does the Directory already path exist?
+                os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Messages" )  # Make directory path
 
             messages = dicts.get( "Message List" )
 
@@ -136,32 +139,32 @@ def merger(queue, configurer):
                 print( f"Message Number: {c + message_num}" )
                 if run_count > 0:
                     message_num = file_getcount( name )
-                filename = "FinalDataBase/" + name + "/Messages/MessageNumber" + str( c + message_num ) + ".json"
+                filename = f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/" + name + "/Messages/MessageNumber" + str( c + message_num ) + ".json"
                 with open( filename, "w" ) as datafile:  # opening json file for writing
                     json.dump( message, datafile, indent=4,
                                separators=(',', ': ') )  # printing data in nice format to file
                     datafile.close()  # Closing File
         try:
-            os.rmdir( "FinalDataBase/None" )
+            os.rmdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data//None" )
         except:
             pass
-        ex = os.path.exists( f"FinalDataBase/{name}/Attachments" )
+        ex = os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Attachments" )
         e2 = os.path.exists( f"In-Process-Attachments/{name}" )
         if ex is False and e2 is True:  # Does the Directory already path exist?
-            os.mkdir( f"FinalDataBase/{name}/Attachments" )  # Make directory path
+            os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Attachments" )  # Make directory path
             if name != "None" or None:
-                for entry in sorted( os.scandir( f"In-Process-Attachments/{name}" ),
+                for entry in sorted( os.scandir( f"/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/{name}" ),
                                      key=lambda e: e.name ):  # This is looping through each file in the directory above
                     file_str = str( entry.name )
                     if name != "None" or None:
-                        origpath = f"In-Process-Attachments/{name}/" + file_str
-                        dstpath = f"FinalDataBase/{name}/Attachments/" + file_str
+                        origpath = f"/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/{name}/" + file_str
+                        dstpath = f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Attachments/" + file_str
                         shutil.move( origpath, dstpath )
 
-    for entry in sorted( os.scandir( "FinalDataBase/" ), key=lambda e: e.name ):
+    for entry in sorted( os.scandir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/" ), key=lambda e: e.name ):
         name = str( entry.name )
         if name != "Totals":
-            num_messages = len( os.listdir( f"FinalDataBase/{name}/Messages" ) )
+            num_messages = len( os.listdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Messages" ) )
 
             orig_num_messages = inbox_vals.get( name )
             new_num_messages = num_messages
@@ -171,7 +174,7 @@ def merger(queue, configurer):
     new_run_count = run_count + 1
     inbox_vals["Run Count"] = new_run_count
 
-    datafile = open( "In-Process-JSONS/inbox_vals.json", "w" )  # opening json file for reading
+    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/inbox_vals.json", "w" )  # opening json file for reading
     json.dump( inbox_vals, datafile, indent=4 )
     datafile.close()
     logger.info( "Parsing Complete." )

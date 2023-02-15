@@ -22,10 +22,9 @@ def links_loop(directory, queue, configurer):
         file_name = filepath + file_str + "/" # Adds the folder to the filename so it can be read in the right location
 
         print( file_str )  # Used to keep track of progress
-        print( p )  # Used to keep track of progress
         name = file_str
 
-        mb = mailbox.maildir( file_name, factory=BytesParser( policy=default ).parse )  # Reading in mbox file
+        mb = mailbox.Maildir( file_name, factory=BytesParser( policy=default ).parse )  # Reading in mbox file
         mblen = len( mb )  # number of messages
 
         '''This sections checks for and handles multiple runs.'''
@@ -66,7 +65,7 @@ def links_loop(directory, queue, configurer):
                 msg_dict[name][f"Message Number {_+message_num}:"] = {"Links": linkdict}
 
 
-        datafile = open( "In-Process-JSONS/MessageLinks.json", "w", encoding="utf-8" )  # opening json file for writing
+        datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/MessageLinks.json", "w", encoding="utf-8" )  # opening json file for writing
         json.dump( msg_dict, datafile, indent=4 )  # printing data in nice format to file
         datafile.close()  # closing file
 

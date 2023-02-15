@@ -19,7 +19,8 @@ def emailparser():
     listener = multiprocessing.Process(target=listener_process, args=(queue, listener_configurer))
     listener.start()
     # creating thread
-    directory = "UaA-Database_Emails/"
+    directory = "//email-analysis-data/new-emails"
+    file_reset(directory)
     p1 = multiprocessing.Process(target=headers_loop, args=(directory, queue, worker_configurer,)) # Header Parsing Process
     p2 = multiprocessing.Process(target=message_content_loop, args=(directory, queue, worker_configurer,))    # Content Parsing Process
     p3 = multiprocessing.Process(target=links_loop, args=(directory, queue, worker_configurer,))  # Links Parsing Process

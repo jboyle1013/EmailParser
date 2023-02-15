@@ -33,7 +33,7 @@ def message_attachment_loop(directory, queue, configurer):
 
         name = file_str
 
-        mb = mailbox.maildir( file_name, factory=BytesParser( policy=default ).parse )  # Reading in mbox file
+        mb = mailbox.Maildir( file_name, factory=BytesParser( policy=default ).parse )  # Reading in mbox file
         mblen = len( mb )  # number of messages
         '''This sections checks for and handles multiple runs.'''
         if mblen == 0 and run_num == 0:
@@ -54,15 +54,16 @@ def message_attachment_loop(directory, queue, configurer):
             _ = 0  # Also part of precautionary measure for empty inboxes
             for _, message in enumerate( mb ):  # Loops through messages in inbox
 
-                has_attachment = attachment_puller( _, name, message, message_num )  # Runs the Content Puller method
+                has_attachment, attachmentname = attachment_puller( _, name, message, message_num )  # Runs the Content Puller method
 
                 ms_dict[f"Message Number {_ + message_num}:"] = has_attachment
+                ms_dict[f"Message Number {_ + message_num} Attachment Name:"] = attachmentname
                 if has_attachment == True:
                     logger.debug(f"Attachment Found in Message Number {_ + message_num} in Inbox {name}")
             mdict[name] = ms_dict
 
 
-    datafile = open( "In-Process-JSONS/message_attachments.json", "w",
+    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/message_attachments.json", "w",
                      encoding="utf-8" )  # opening json file for writing
     json.dump( mdict, datafile, indent=4,
                separators=(',', ': ') )  # printing data in nice format to file
@@ -94,13 +95,13 @@ def attachment_puller(_, name, message, message_num):
         if str( cdispo ) == "inline":
             try:
                 attachmentorig = sub.get_payload()
-                inline_handler(attachmentorig, name, _, message_num)
-                return True
+                fname = inline_handler(attachmentorig, name, _, message_num)
+                return True, fname
 
             except:
                 attachmentorig = part.get_payload()
-                inline_handler( attachmentorig, name, _, message_num )
-                return True
+                fname = inline_handler( attachmentorig, name, _, message_num )
+                return True, fname
 
 
         elif cdispo != None:
@@ -108,12 +109,12 @@ def attachment_puller(_, name, message, message_num):
             filetype = att_origfilename.split( '.' )[1]
             if "eml" in filetype:
                 attachment = sub.get_payload()
-                email_processor( _, attachment, name, att_origfilename, message_num )
-                return True
+                fname = email_processor( _, attachment, name, att_origfilename, message_num )
+                return True, fname
             else:
                 attachment = sub.get_payload()
 
-                fp = "In-Process-Attachments/" + name + "/"
+                fp = "/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/" + name + "/"
                 if not os.path.exists( fp ):  # Does the Directory already path exist?
                     os.mkdir( fp )  # Make directory path
 
@@ -124,14 +125,14 @@ def attachment_puller(_, name, message, message_num):
                     decoded_attachment_data = decode_attachmet( attachment )
                     attachment_file.write( decoded_attachment_data )
 
-            return True
+            return True, att_filename
         else:
-            return False
-    return False
+            return False, ""
+    return False, ""
 
 
 def email_processor(_, attachment, name, att_origfilename, message_num):
-    fp = "In-Process-Attachments/" + name + "/"
+    fp = "/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/" + name + "/"
     if not os.path.exists( fp ):  # Does the Directory already path exist?
         os.mkdir( fp )  # Make directory path
 
@@ -146,7 +147,7 @@ def email_processor(_, attachment, name, att_origfilename, message_num):
         "Content:": full_content
     }
 
-    fp = "In-Process-Attachments/" + name + "/"
+    fp = "/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/" + name + "/"
     if not os.path.exists( fp ):  # Does the Directory already path exist?
         os.mkdir( fp )  # Make directory path
 
@@ -156,6 +157,7 @@ def email_processor(_, attachment, name, att_origfilename, message_num):
     datafile = open( att_file_path, "w" )  # opening json file for writing
     json.dump( message, datafile, indent=4, separators=(',', ': ') )  # printing data in nice format to file
     datafile.close()  # Closing File
+    return att_filename
 
 
 def email_attachment_content(attachment):
@@ -182,7 +184,7 @@ def inline_handler(attachmentorig, name, _, message_num):
         unitext = attachmentorig.encode( "ascii", "ignore" )
         attachment = unitext.decode()
         att_origfilename = "inlineattachment.txt"
-        fp = "In-Process-Attachments/" + name + "/"
+        fp = "/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/" + name + "/"
         if not os.path.exists( fp ):  # Does the Directory already path exist?
             os.mkdir( fp )  # Make directory path
 
@@ -193,4 +195,6 @@ def inline_handler(attachmentorig, name, _, message_num):
             attachment_file.write( attachment )
     except AttributeError:
         attachment = attachmentorig
-        email_processor( _, attachment, name, att_origfilename, message_num )
+        att_filename = email_processor( _, attachment, name, att_origfilename, message_num )
+
+    return att_filename
