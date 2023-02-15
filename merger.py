@@ -7,8 +7,9 @@ def merger(queue, configurer):
     configurer( queue )
     logger = logging.getLogger()
     logger.info( "Merging Begins" )
-    if not os.path.exists( f"FinalDataBase" ):  # Does the Directory already path exist?
-        os.mkdir( f"FinalDataBase/" )  # Make directory path
+    run_count = file_getruncount()
+    if not os.path.exists( f"//email-analysis-data/processed-emails/" ):  # Does the Directory already path exist?
+        os.mkdir( f"//email-analysis-data/processed-emails/" )  # Make directory path
 
     datafile = open( "/root/EmailParser/EmailParser/In-Process-JSONS/data.json", "r" )  # opening json file for reading
     final_data = json.load( datafile )  # Reads from file
@@ -37,7 +38,7 @@ def merger(queue, configurer):
     datafile = open( "/root/EmailParser/EmailParser/In-Process-JSONS/inbox_vals.json", "r" )  # opening json file for reading
     inbox_vals = json.load( datafile )  # Reads from file
     datafile.close()
-    run_count = file_getruncount()  # This tells us how many times this program has been run
+      # This tells us how many times this program has been run
     for i, inbox in enumerate( final_data ):  # Loops through final data dictionary
         links_added = 0
         name = final_data[i].get( "Name" )  # Pulls name of Inbox Owner
@@ -92,8 +93,8 @@ def merger(queue, configurer):
 
                 message["Content"]["Has Attachment"] = ma_data[name].get( f'Message Number {_ + message_num}:' )
         if name != "None":
-            if not os.path.exists( f"FinalDataBase/{name}" ):  # Does the Directory already path exist?
-                os.mkdir( f"FinalDataBase/{name}" )  # Make directory path
+            if not os.path.exists( f"//email-analysis-data/processed-emails/{name}" ):  # Does the Directory already path exist?
+                os.mkdir( f"//email-analysis-data/processed-emails/{name}" )  # Make directory path
     print( "Writing to final files" )
     logger.info( "Writing to final files" )
 
@@ -101,9 +102,9 @@ def merger(queue, configurer):
         name = dicts.get( "Name" )  # Pulls name of Inbox Owner
         print( name )
         if name is None:  # Precaution to Skip final Total Count Dictionary
-            if not os.path.exists( f"FinalDataBase/Totals" ):
-                os.mkdir( f"FinalDataBase/Totals" )
-            datafile = open( f"FinalDataBase/Totals/totals.json", "w" )  # opening json file for writing
+            if not os.path.exists( f"//email-analysis-data/processed-emails/Totals" ):
+                os.mkdir( f"//email-analysis-data/processed-emails/Totals" )
+            datafile = open( f"//email-analysis-data/processed-emails/Totals/totals.json", "w" )  # opening json file for writing
             json.dump( dicts, datafile, indent=4, separators=(',', ': ') )  # printing data in nice format to file
             datafile.close()  # Closing File
         else:
@@ -115,8 +116,8 @@ def merger(queue, configurer):
                 "Number Of Messages": message_num + dicts.get( "Number Of Messages" ) if run_count > 1 else dicts.get( "Number Of Messages" )
             }
 
-            if not os.path.exists( f"FinalDataBase/{name}/InboxInfo" ):  # Does the Directory already path exist?
-                os.mkdir( f"FinalDataBase/{name}/InboxInfo" )  # Make directory path
+            if not os.path.exists( f"//email-analysis-data/processed-emails/{name}/InboxInfo" ):  # Does the Directory already path exist?
+                os.mkdir( f"//email-analysis-data/processed-emails/{name}/InboxInfo" )  # Make directory path
 
             filename = "FinalDataBase/" + name + "/InboxInfo/" + name + "info" + ".json"
             with open( filename, "w" ) as datafile:  # opening json file for writing
@@ -124,8 +125,8 @@ def merger(queue, configurer):
                            separators=(',', ': ') )  # printing data in nice format to file
                 datafile.close()  # Closing File
 
-            if not os.path.exists( f"FinalDataBase/{name}/Messages" ):  # Does the Directory already path exist?
-                os.mkdir( f"FinalDataBase/{name}/Messages" )  # Make directory path
+            if not os.path.exists( f"//email-analysis-data/processed-emails/{name}/Messages" ):  # Does the Directory already path exist?
+                os.mkdir( f"//email-analysis-data/processed-emails/{name}/Messages" )  # Make directory path
 
             messages = dicts.get( "Message List" )
 
@@ -136,32 +137,32 @@ def merger(queue, configurer):
                 print( f"Message Number: {c + message_num}" )
                 if run_count > 0:
                     message_num = file_getcount( name )
-                filename = "FinalDataBase/" + name + "/Messages/MessageNumber" + str( c + message_num ) + ".json"
+                filename = f"//email-analysis-data/processed-emails/" + name + "/Messages/MessageNumber" + str( c + message_num ) + ".json"
                 with open( filename, "w" ) as datafile:  # opening json file for writing
                     json.dump( message, datafile, indent=4,
                                separators=(',', ': ') )  # printing data in nice format to file
                     datafile.close()  # Closing File
         try:
-            os.rmdir( "FinalDataBase/None" )
+            os.rmdir( f"//email-analysis-data/processed-emails//None" )
         except:
             pass
-        ex = os.path.exists( f"FinalDataBase/{name}/Attachments" )
+        ex = os.path.exists( f"//email-analysis-data/processed-emails/{name}/Attachments" )
         e2 = os.path.exists( f"In-Process-Attachments/{name}" )
         if ex is False and e2 is True:  # Does the Directory already path exist?
-            os.mkdir( f"FinalDataBase/{name}/Attachments" )  # Make directory path
+            os.mkdir( f"//email-analysis-data/processed-emails/{name}/Attachments" )  # Make directory path
             if name != "None" or None:
                 for entry in sorted( os.scandir( f"In-Process-Attachments/{name}" ),
                                      key=lambda e: e.name ):  # This is looping through each file in the directory above
                     file_str = str( entry.name )
                     if name != "None" or None:
                         origpath = f"In-Process-Attachments/{name}/" + file_str
-                        dstpath = f"FinalDataBase/{name}/Attachments/" + file_str
+                        dstpath = f"//email-analysis-data/processed-emails/{name}/Attachments/" + file_str
                         shutil.move( origpath, dstpath )
 
-    for entry in sorted( os.scandir( "FinalDataBase/" ), key=lambda e: e.name ):
+    for entry in sorted( os.scandir( f"//email-analysis-data/processed-emails/" ), key=lambda e: e.name ):
         name = str( entry.name )
         if name != "Totals":
-            num_messages = len( os.listdir( f"FinalDataBase/{name}/Messages" ) )
+            num_messages = len( os.listdir( f"//email-analysis-data/processed-emails/{name}/Messages" ) )
 
             orig_num_messages = inbox_vals.get( name )
             new_num_messages = num_messages
