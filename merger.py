@@ -8,8 +8,8 @@ def merger(queue, configurer):
     logger = logging.getLogger()
     logger.info( "Merging Begins" )
     run_count = file_getruncount()
-    if not os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/" ):  # Does the Directory already path exist?
-        os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/" )  # Make directory path
+    if not os.path.exists( f"/root/Processed-Data/" ):  # Does the Directory already path exist?
+        os.mkdir( f"/root/Processed-Data/" )  # Make directory path
 
     datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/data.json", "r" )  # opening json file for reading
     final_data = json.load( datafile )  # Reads from file
@@ -95,8 +95,8 @@ def merger(queue, configurer):
                 if ma_data[name].get(f'Message Number {_ + message_num}:'):
                     message["Content"]["Attachment Name"] = ma_data[name].get( f'Message Number {_ + message_num} Attachment Name:' )
         if name != "None":
-            if not os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}" ):  # Does the Directory already path exist?
-                os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}" )  # Make directory path
+            if not os.path.exists( f"/root/Processed-Data/{name}" ):  # Does the Directory already path exist?
+                os.mkdir( f"/root/Processed-Data/{name}" )  # Make directory path
     print( "Writing to final files" )
     logger.info( "Writing to final files" )
 
@@ -104,9 +104,9 @@ def merger(queue, configurer):
         name = dicts.get( "Name" )  # Pulls name of Inbox Owner
         print( name )
         if name is None:  # Precaution to Skip final Total Count Dictionary
-            if not os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/Totals" ):
-                os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/Totals" )
-            datafile = open( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/Totals/totals.json", "w" )  # opening json file for writing
+            if not os.path.exists( f"/root/Processed-Data/Totals" ):
+                os.mkdir( f"/root/Processed-Data/Totals" )
+            datafile = open( f"/root/Processed-Data/Totals/totals.json", "w" )  # opening json file for writing
             json.dump( dicts, datafile, indent=4, separators=(',', ': ') )  # printing data in nice format to file
             datafile.close()  # Closing File
         else:
@@ -118,8 +118,8 @@ def merger(queue, configurer):
                 "Number Of Messages": message_num + dicts.get( "Number Of Messages" ) if run_count > 1 else dicts.get( "Number Of Messages" )
             }
 
-            if not os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/InboxInfo" ):  # Does the Directory already path exist?
-                os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/InboxInfo" )  # Make directory path
+            if not os.path.exists( f"/root/Processed-Data/{name}/InboxInfo" ):  # Does the Directory already path exist?
+                os.mkdir( f"/root/Processed-Data/{name}/InboxInfo" )  # Make directory path
 
             filename = "FinalDataBase/" + name + "/InboxInfo/" + name + "info" + ".json"
             with open( filename, "w" ) as datafile:  # opening json file for writing
@@ -127,8 +127,8 @@ def merger(queue, configurer):
                            separators=(',', ': ') )  # printing data in nice format to file
                 datafile.close()  # Closing File
 
-            if not os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Messages" ):  # Does the Directory already path exist?
-                os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Messages" )  # Make directory path
+            if not os.path.exists( f"/root/Processed-Data/{name}/Messages" ):  # Does the Directory already path exist?
+                os.mkdir( f"/root/Processed-Data/{name}/Messages" )  # Make directory path
 
             messages = dicts.get( "Message List" )
 
@@ -139,32 +139,32 @@ def merger(queue, configurer):
                 print( f"Message Number: {c + message_num}" )
                 if run_count > 0:
                     message_num = file_getcount( name )
-                filename = f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/" + name + "/Messages/MessageNumber" + str( c + message_num ) + ".json"
+                filename = f"/root/Processed-Data/" + name + "/Messages/MessageNumber" + str( c + message_num ) + ".json"
                 with open( filename, "w" ) as datafile:  # opening json file for writing
                     json.dump( message, datafile, indent=4,
                                separators=(',', ': ') )  # printing data in nice format to file
                     datafile.close()  # Closing File
         try:
-            os.rmdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data//None" )
+            os.rmdir( f"/root/Processed-Data//None" )
         except:
             pass
-        ex = os.path.exists( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Attachments" )
+        ex = os.path.exists( f"/root/Processed-Data/{name}/Attachments" )
         e2 = os.path.exists( f"In-Process-Attachments/{name}" )
         if ex is False and e2 is True:  # Does the Directory already path exist?
-            os.mkdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Attachments" )  # Make directory path
+            os.mkdir( f"/root/Processed-Data/{name}/Attachments" )  # Make directory path
             if name != "None" or None:
                 for entry in sorted( os.scandir( f"/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/{name}" ),
                                      key=lambda e: e.name ):  # This is looping through each file in the directory above
                     file_str = str( entry.name )
                     if name != "None" or None:
                         origpath = f"/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/{name}/" + file_str
-                        dstpath = f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Attachments/" + file_str
+                        dstpath = f"/root/Processed-Data/{name}/Attachments/" + file_str
                         shutil.move( origpath, dstpath )
 
-    for entry in sorted( os.scandir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/" ), key=lambda e: e.name ):
+    for entry in sorted( os.scandir( f"/root/Processed-Data/" ), key=lambda e: e.name ):
         name = str( entry.name )
         if name != "Totals":
-            num_messages = len( os.listdir( f"/root/EmailParser/use-and-abuse/EmailParser/Processed-Data/{name}/Messages" ) )
+            num_messages = len( os.listdir( f"/root/Processed-Data/{name}/Messages" ) )
 
             orig_num_messages = inbox_vals.get( name )
             new_num_messages = num_messages

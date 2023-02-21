@@ -9,6 +9,7 @@ from message_attachment_loop import message_attachment_loop
 There are some necessary functions that are in this file that we want to make sure we 
 have access to.'''
 from multirun_file_manager import *
+from bouncer import *
 
 '''This is the main function of the parser. This parser will now support multiple runs. To turn that on remove
 the file_reset function.'''
