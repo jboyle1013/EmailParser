@@ -15,27 +15,27 @@ def merger(queue, configurer):
     final_data = json.load( datafile )  # Reads from file
     datafile.close()  # Closes File
 
-    mcdatafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/message_content.json", "r" )  # opening json file for reading
+    mcdatafile = open( "/root/EmailParser/In-Process-JSONS/message_content.json", "r" )  # opening json file for reading
     mc_data = json.load( mcdatafile )  # Reads from file
     mcdatafile.close()  # Closes File
 
-    madatafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/message_attachments.json", "r" )  # opening json file for reading
+    madatafile = open( "/root/EmailParser/In-Process-JSONS/message_attachments.json", "r" )  # opening json file for reading
     ma_data = json.load( madatafile )  # Reads from file
     madatafile.close()  # Closes File
 
-    htmldatafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/MessageLinks.json", "r" )  # opening json file for reading
+    htmldatafile = open( "/root/EmailParser/In-Process-JSONS/MessageLinks.json", "r" )  # opening json file for reading
     html_data = json.load( htmldatafile )  # Reads from file
     htmldatafile.close()  # Closes File
 
-    extra_linksfile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/extra_links.json", "r" )  # opening json file for reading
+    extra_linksfile = open( "/root/EmailParser/In-Process-JSONS/extra_links.json", "r" )  # opening json file for reading
     extra_links = json.load( extra_linksfile )  # Reads from file
     extra_linksfile.close()  # Closes File
 
-    inbox_idsfile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/inbox_ids.json", "r" )  # opening json file for reading
+    inbox_idsfile = open( "/root/EmailParser/In-Process-JSONS/inbox_ids.json", "r" )  # opening json file for reading
     inbox_ids = json.load( inbox_idsfile )  # Reads from file
     inbox_idsfile.close()  # Closes File
 
-    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/inbox_vals.json", "r" )  # opening json file for reading
+    datafile = open( "/root/EmailParser/In-Process-JSONS/inbox_vals.json", "r" )  # opening json file for reading
     inbox_vals = json.load( datafile )  # Reads from file
     datafile.close()
       # This tells us how many times this program has been run
@@ -153,11 +153,11 @@ def merger(queue, configurer):
         if ex is False and e2 is True:  # Does the Directory already path exist?
             os.mkdir( f"/root/Processed-Data/{name}/Attachments" )  # Make directory path
             if name != "None" or None:
-                for entry in sorted( os.scandir( f"/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/{name}" ),
+                for entry in sorted( os.scandir( f"/root/EmailParser/In-Process-Attachments/{name}" ),
                                      key=lambda e: e.name ):  # This is looping through each file in the directory above
                     file_str = str( entry.name )
                     if name != "None" or None:
-                        origpath = f"/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/{name}/" + file_str
+                        origpath = f"/root/EmailParser/In-Process-Attachments/{name}/" + file_str
                         dstpath = f"/root/Processed-Data/{name}/Attachments/" + file_str
                         shutil.move( origpath, dstpath )
 
@@ -174,7 +174,7 @@ def merger(queue, configurer):
     new_run_count = run_count + 1
     inbox_vals["Run Count"] = new_run_count
 
-    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/inbox_vals.json", "w" )  # opening json file for reading
+    datafile = open( "/root/EmailParser/In-Process-JSONS/inbox_vals.json", "w" )  # opening json file for reading
     json.dump( inbox_vals, datafile, indent=4 )
     datafile.close()
     logger.info( "Parsing Complete." )

@@ -63,7 +63,7 @@ def message_attachment_loop(directory, queue, configurer):
             mdict[name] = ms_dict
 
 
-    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/message_attachments.json", "w",
+    datafile = open( "/root/EmailParser/In-Process-JSONS/message_attachments.json", "w",
                      encoding="utf-8" )  # opening json file for writing
     json.dump( mdict, datafile, indent=4,
                separators=(',', ': ') )  # printing data in nice format to file
@@ -114,7 +114,7 @@ def attachment_puller(_, name, message, message_num):
             else:
                 attachment = sub.get_payload()
 
-                fp = "/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/" + name + "/"
+                fp = "/root/EmailParser/In-Process-Attachments/" + name + "/"
                 if not os.path.exists( fp ):  # Does the Directory already path exist?
                     os.mkdir( fp )  # Make directory path
 
@@ -132,7 +132,7 @@ def attachment_puller(_, name, message, message_num):
 
 
 def email_processor(_, attachment, name, att_origfilename, message_num):
-    fp = "/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/" + name + "/"
+    fp = "/root/EmailParser/In-Process-Attachments/" + name + "/"
     if not os.path.exists( fp ):  # Does the Directory already path exist?
         os.mkdir( fp )  # Make directory path
 
@@ -147,7 +147,7 @@ def email_processor(_, attachment, name, att_origfilename, message_num):
         "Content:": full_content
     }
 
-    fp = "/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/" + name + "/"
+    fp = "/root/EmailParser/In-Process-Attachments/" + name + "/"
     if not os.path.exists( fp ):  # Does the Directory already path exist?
         os.mkdir( fp )  # Make directory path
 
@@ -184,7 +184,7 @@ def inline_handler(attachmentorig, name, _, message_num):
         unitext = attachmentorig.encode( "ascii", "ignore" )
         attachment = unitext.decode()
         att_origfilename = "inlineattachment.txt"
-        fp = "/root/EmailParser/use-and-abuse/EmailParser/In-Process-Attachments/" + name + "/"
+        fp = "/root/EmailParser/In-Process-Attachments/" + name + "/"
         if not os.path.exists( fp ):  # Does the Directory already path exist?
             os.mkdir( fp )  # Make directory path
 
