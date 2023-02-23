@@ -11,13 +11,8 @@ def file_reset(directory):
                          key=lambda e: e.name ):  # This is looping through each file in the directory above
 
         '''These line are for getting the Inbox Identifier from the filename'''
-        file_str = str( entry.name )
-        n_str = file_str.split( "." )[0]
-        if "INBOX" not in n_str:
-            name = n_str.split( "_" )[0]
-        else:
-            name = file_str.split( "." )[1]
-        '''This is where the number is set'''
+        name = str( entry.name )
+
         num = 1
         inbox_vals_list[name] = num
 
@@ -56,13 +51,8 @@ def file_idgen(directory):
                          key=lambda e: e.name ):  # This is looping through each file in the directory above
 
         '''These line are for getting the Inbox Identifier from the filename'''
-        file_str = str( entry.name )
-        n_str = file_str.split( "." )[0]
-        if "INBOX" not in n_str:
-            name = n_str.split( "_" )[0]
-        else:
-            name = file_str.split( "." )[1]
-        '''This is where the number is set'''
+        name = str( entry.name )
+
         id = ''.join( random.choice( string.ascii_uppercase +
                                      string.ascii_lowercase + string.digits ) for _ in range( 8 ) )
         if id not in inbox_id_list.items():

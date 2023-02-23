@@ -111,11 +111,16 @@ def merger(queue, configurer):
             datafile.close()  # Closing File
         else:
             print( "Inbox Info" )
+            if run_count > 1:
+                message_num = dicts.get("Number Of Messages") + message_num
+            else:
+                message_num = dicts.get("Number Of Messages") + 1
+
             inboxinfo = {
-                "Name": dicts.get( "Name" ),
-                "Inbox Number": dicts.get( "Inbox Number" ),
-                "ID": dicts.get( "_id" ),
-                "Number Of Messages": message_num + dicts.get( "Number Of Messages" ) if run_count > 1 else dicts.get( "Number Of Messages" )
+                "Name": dicts.get("Name"),
+                "Inbox Number": dicts.get("Inbox Number"),
+                "ID": dicts.get("_id"),
+                "Number Of Messages": message_num
             }
 
             if not os.path.exists( f"/root/Processed-Data/{name}/InboxInfo" ):  # Does the Directory already path exist?
