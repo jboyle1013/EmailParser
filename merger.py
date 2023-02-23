@@ -11,7 +11,7 @@ def merger(queue, configurer):
     if not os.path.exists( f"/root/Processed-Data/" ):  # Does the Directory already path exist?
         os.mkdir( f"/root/Processed-Data/" )  # Make directory path
 
-    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/data.json", "r" )  # opening json file for reading
+    datafile = open( "/root/EmailParser/In-Process-JSONS/data.json", "r" )  # opening json file for reading
     final_data = json.load( datafile )  # Reads from file
     datafile.close()  # Closes File
 
