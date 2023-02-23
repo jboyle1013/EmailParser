@@ -144,7 +144,7 @@ def merger(queue, configurer):
                 print( f"Message Number: {c + message_num}" )
                 if run_count > 0:
                     message_num = file_getcount( name )
-                filename = f"Processed-Data/" + name + "/Messages/" + name + ".MessageNumber" + str( c + message_num ) + ".json"
+                filename = f"/root/Processed-Data/" + name + "/Messages/" + name + ".MessageNumber" + str( c + message_num ) + ".json"
                 with open( filename, "w" ) as datafile:  # opening json file for writing
                     json.dump( message, datafile, indent=4,
                                separators=(',', ': ') )  # printing data in nice format to file
