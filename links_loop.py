@@ -65,7 +65,7 @@ def links_loop(directory, queue, configurer):
                 msg_dict[name][f"Message Number {_+message_num}:"] = {"Links": linkdict}
 
 
-        datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/MessageLinks.json", "w", encoding="utf-8" )  # opening json file for writing
+        datafile = open( "/root/EmailParser/In-Process-JSONS/MessageLinks.json", "w", encoding="utf-8" )  # opening json file for writing
         json.dump( msg_dict, datafile, indent=4 )  # printing data in nice format to file
         datafile.close()  # closing file
 
