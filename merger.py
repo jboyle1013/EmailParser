@@ -121,7 +121,7 @@ def merger(queue, configurer):
             if not os.path.exists( f"/root/Processed-Data/{name}/InboxInfo" ):  # Does the Directory already path exist?
                 os.mkdir( f"/root/Processed-Data/{name}/InboxInfo" )  # Make directory path
 
-            filename = "FinalDataBase/" + name + "/InboxInfo/" + name + "info" + ".json"
+            filename = "/root/Processed-Data/" + name + "/InboxInfo/" + name + "info" + ".json"
             with open( filename, "w" ) as datafile:  # opening json file for writing
                 json.dump( inboxinfo, datafile, indent=4,
                            separators=(',', ': ') )  # printing data in nice format to file
