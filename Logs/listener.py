@@ -6,7 +6,7 @@ def listener_configurer():
     logger.setLevel( logging.DEBUG )
     formatter = logging.Formatter('%(asctime)s.%(msecs)03d %(levelname)s %(processName)s %(funcName)s: %(message)s',
                                   datefmt='%Y-%m-%d %H:%M:%S',)
-    handler = logging.FileHandler('Logs/ParserLog.log', mode='w')
+    handler = logging.FileHandler('//var/log/email-preprocessing', mode='w')
     handler.setFormatter( formatter )
     logger.addHandler(handler)
     logger.info("Parsing Process Beginning")
