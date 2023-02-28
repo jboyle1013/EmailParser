@@ -47,7 +47,7 @@ def makebatches(tf):
             sublist_key = 'v-z'
         if sublist_key not in sublists:
             sublists[sublist_key] = []
-        sublists[sublist_key].append(value)
+        sublists[sublist_key].append(name)
 
     for list in sublists.keys():
         for names in sublists.get(list):
