@@ -166,7 +166,7 @@ def merger(queue, configurer):
 
     for entry in sorted( os.scandir( f"/root/Processed-Data/" ), key=lambda e: e.name ):
         name = str( entry.name )
-        if (name != "Totals") or (name != "totals.json"):
+        if (name != "Totals") and (name != "totals.json"):
             num_messages = len( os.listdir( f"/root/Processed-Data/{name}/Messages" ) )
 
             orig_num_messages = inbox_vals.get( name )
