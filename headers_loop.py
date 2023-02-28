@@ -14,11 +14,12 @@ def headers_loop(directory, queue, configurer):
     total_message_num = 0  # total number of messages in database
     total_inbox_num = 0  # total number of inboxes in database
     run_num = file_getruncount()    # This tells us how many times this program has been run
+    final_num = 0
     for i, entry in enumerate(sorted(os.scandir(directory), key=lambda e: e.name)):  # This is looping through each file in the directory above
         file_str = str(entry.name)  # Turns the name of the entry to a string
         filepath = directory + "/"  # Adds slash  to end of directory name
         file_name = filepath + file_str + "/" # Adds the folder to the filename so it can be read in the right location
-
+        final_num = 0
         print( file_str )  # Used to keep track of progress
         name = file_str
 
@@ -55,7 +56,7 @@ def headers_loop(directory, queue, configurer):
                 msg_list[_]["Headers"] = jdict  # adding message headers to list of messages in inbox
 
                 jdict = {}  # clearing dict for next message
-                final_num = _
+                final_num = final_num + 1
 
         """ This section is making sure the dictionary is formatted properly """
         inboxdict["Name"] = name
