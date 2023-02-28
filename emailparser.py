@@ -22,6 +22,7 @@ def emailparser(tf):
     # creating thread
     directory = "/root/email-analysis-data/new-emails"
     if tf:
+        file_idgen(directory)
         file_reset(directory)
     p1 = multiprocessing.Process(target=headers_loop, args=(directory, queue, worker_configurer,)) # Header Parsing Process
     p2 = multiprocessing.Process(target=message_content_loop, args=(directory, queue, worker_configurer,))    # Content Parsing Process
