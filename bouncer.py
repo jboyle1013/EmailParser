@@ -55,7 +55,7 @@ def makebatches(tf):
             fsetup = "/root/email-analysis-data/new-emails" + "/" + names + "/"
             if not os.path.exists( fsetup ):  # Does the Directory already path exist?
                 os.mkdir( fsetup)  # Make directory path
-            foptions = ["new", "curr", "temp"]
+            foptions = ["new", "cur", "temp"]
             for opt in foptions:
                 fpath = fsetup + opt + "/"
                 if not os.path.exists( fpath ): # Does the Directory already path exist?
