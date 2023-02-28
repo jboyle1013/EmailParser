@@ -166,11 +166,11 @@ def merger(queue, configurer):
 
     for entry in sorted( os.scandir( f"/root/Processed-Data/" ), key=lambda e: e.name ):
         name = str( entry.name )
-        if name != "Totals":
+        if (name != "Totals") or (name != "totals.json"):
             num_messages = len( os.listdir( f"/root/Processed-Data/{name}/Messages" ) )
 
             orig_num_messages = inbox_vals.get( name )
-            new_num_messages = num_messages
+            new_num_messages = num_messages + orig_num_messages
 
             inbox_vals[name] = new_num_messages
     run_count = inbox_vals.get( "Run Count" )
