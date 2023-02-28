@@ -168,8 +168,9 @@ def merger(queue, configurer):
         name = str( entry.name )
         if (name != "Totals") and (name != "totals.json"):
             num_messages = len( os.listdir( f"/root/Processed-Data/{name}/Messages" ) )
-
-            orig_num_messages = inbox_vals.get( name )
+            orig_num_messages = 0
+            if run_count > 0:
+                orig_num_messages = inbox_vals.get( name )
             new_num_messages = num_messages + orig_num_messages
 
             inbox_vals[name] = new_num_messages
