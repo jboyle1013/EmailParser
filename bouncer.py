@@ -27,7 +27,7 @@ def makebatchest(tf):
 
 
 def makebatches(tf):
-    directory = "//email-analysis-data/new-emails"
+    directory = "/root/email-analysis-data/btest/new-emails"
     folder_names = [f.name for f in os.scandir(directory) if f.is_dir()]
     # sort the folder names in alphabetical order
     folder_names.sort()
