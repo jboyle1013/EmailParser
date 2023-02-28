@@ -14,7 +14,10 @@ def filereplacer():
             file_str = str(file.name)  # Turns the name of the file to a string
             fd_path = dest_name + "/" + f_str + "/"
             fopath = dirpath + "/" + file_str
-            shutil.move(fopath, fd_path)
+            try:
+                shutil.move(fopath, fd_path)
+            except:
+                pass
 
 
 def filereplacerbackup():
@@ -27,7 +30,10 @@ def filereplacerbackup():
             file_str = str(file.name)  # Turns the name of the file to a string
             fd_path = dest_name + "/" + f_str + "/"
             fopath = dirpath + "/" + file_str
-            shutil.copy(fopath, fd_path)
+            try:
+                shutil.copy(fopath, fd_path)
+            except:
+                pass
 
 
 def repfiles():
