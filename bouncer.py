@@ -50,6 +50,7 @@ def makebatches(tf):
         sublists[sublist_key].append(name)
 
     for list in sublists.keys():
+        print(f"Inboxes {list} being parsed:")
         for names in sublists.get(list):
             print(f"Inboxes {name} being parsed:")
             dir_name = directory + "/" + names
