@@ -1,7 +1,8 @@
 from emailparser import emailparser
+from bouncer import makebatches
 
 def startbycron():
-    bouncer(False)
+    makebatches(False)
 
 
 
