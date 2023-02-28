@@ -46,7 +46,7 @@ def makebatches(tf):
             for file in sorted(os.scandir(dir_name), key=lambda e: e.name):
                 file_str = str(file.name)  # Turns the name of the entry to a string
                 origpath = dir_name + "/" + file_str
-                shutil.copy(origpath, distpath)
+                shutil.move(origpath, distpath)
         emailparser(tf)
         for names in sublists.get(list):
             distpath = "/root/email-analysis-data/new-emails" + "/" + names + "/new/"
