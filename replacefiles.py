@@ -31,7 +31,7 @@ def filereplacerbackup():
             fd_path = dest_name + "/" + f_str + "/"
             fopath = dirpath + "/" + file_str
             try:
-                shutil.copy(fd_path, fopath)
+                shutil.copy(fopath, fd_path)
             except:
                 pass
 
