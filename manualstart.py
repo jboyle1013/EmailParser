@@ -15,4 +15,4 @@ def manualstart(argv):
 
 
 if __name__ == "__main__":
-    startbycron(sys.argv[1:])
+    manualstart(sys.argv[1:])
