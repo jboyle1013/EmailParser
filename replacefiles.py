@@ -12,7 +12,7 @@ def filereplacer():
         dirpath = dir_name + "/" + f_str
         for file in sorted(os.scandir(dirpath), key=lambda e: e.name):
             file_str = str(file.name)  # Turns the name of the file to a string
-            fd_path = dest_name + "/" + folder + "/"
+            fd_path = dest_name + "/" + f_str + "/"
             fopath = dirpath + "/" + file_str
             shutil.move(fopath, fd_path)
 
