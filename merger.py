@@ -104,9 +104,7 @@ def merger(queue, configurer):
         name = dicts.get( "Name" )  # Pulls name of Inbox Owner
         print( name )
         if name is None:  # Precaution to Skip final Total Count Dictionary
-            if not os.path.exists( f"/root/Processed-Data/Totals" ):
-                os.mkdir( f"/root/Processed-Data/Totals" )
-            datafile = open( f"/root/Processed-Data/Totals/totals.json", "w" )  # opening json file for writing
+            datafile = open( f"/root/Processed-Data/totals.json", "w" )  # opening json file for writing
             json.dump( dicts, datafile, indent=4, separators=(',', ': ') )  # printing data in nice format to file
             datafile.close()  # Closing File
         else:
@@ -123,10 +121,10 @@ def merger(queue, configurer):
                 "Number Of Messages": message_num
             }
 
-            if not os.path.exists( f"/root/Processed-Data/{name}/InboxInfo" ):  # Does the Directory already path exist?
-                os.mkdir( f"/root/Processed-Data/{name}/InboxInfo" )  # Make directory path
+            if not os.path.exists( f"/root/Processed-Data/{name}" ):  # Does the Directory already path exist?
+                os.mkdir( f"/root/Processed-Data/{name}" )  # Make directory path
 
-            filename = "/root/Processed-Data/" + name + "/InboxInfo/" + name + "info" + ".json"
+            filename = "/root/Processed-Data/" + name + "/" + name + "info" + ".json"
             with open( filename, "w" ) as datafile:  # opening json file for writing
                 json.dump( inboxinfo, datafile, indent=4,
                            separators=(',', ': ') )  # printing data in nice format to file
