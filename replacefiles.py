@@ -2,6 +2,8 @@ import shutil
 import os
 
 
+
+
 def filereplacer():
     dir_name = "//email-analysis-data/processed-emails"
     dest_name = "//email-analysis-data/new-emails"
@@ -26,3 +28,11 @@ def filereplacerbackup():
             fd_path = dest_name + "/" + file_str
             fopath = dirpath + "/"
             shutil.copy(fopath, fd_path)
+
+
+def repfiles():
+    filereplacer()
+    filereplacerbackup()
+
+if __name__ == "__main__":
+    repfiles()
