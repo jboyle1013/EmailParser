@@ -14,7 +14,7 @@ from multirun_file_manager import *
 '''This is the main function of the parser. This parser will now support multiple runs. To turn that on remove
 the file_reset function.'''
 
-
+cd
 def emailparser(tf):
     queue = multiprocessing.Queue(-1) # The queue and the listener are for allowing the parser to use one log file.
     listener = multiprocessing.Process(target=listener_process, args=(queue, listener_configurer))
