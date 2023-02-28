@@ -33,8 +33,8 @@ def makebatches(tf):
     folder_names.sort()
     sublists = {
         "a-g" : [],
-        "h-n" : [],
-        "o-u" : [],
+        "h-p" : [],
+        "q-u" : [],
         "v-z" : [],
     }
 
@@ -44,8 +44,8 @@ def makebatches(tf):
             continue
         if first_letter <= 'g':
             sublist_key = 'a-g'
-        elif first_letter <= 'n':
-            sublist_key = 'h-n'
+        elif first_letter <= 'p':
+            sublist_key = 'h-p'
         elif first_letter <= 'u':
             sublist_key = 'o-u'
         else:
