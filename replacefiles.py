@@ -12,8 +12,8 @@ def filereplacer():
         dirpath = dir_name + "/" + f_str
         for file in sorted(os.scandir(dirpath), key=lambda e: e.name):
             file_str = str(file.name)  # Turns the name of the file to a string
-            fd_path = dest_name + "/" + file_str
-            fopath = dirpath + "/"
+            fd_path = dest_name + "/" + folder + "/"
+            fopath = dirpath + "/" + file_str
             shutil.move(fopath, fd_path)
 
 
@@ -25,8 +25,8 @@ def filereplacerbackup():
         dirpath = dir_name + "/" + f_str
         for file in sorted(os.scandir(dirpath), key=lambda e: e.name):
             file_str = str(file.name)  # Turns the name of the file to a string
-            fd_path = dest_name + "/" + file_str
-            fopath = dirpath + "/"
+            fd_path = dest_name + "/" + folder + "/"
+            fopath = dirpath + "/" + file_str
             shutil.copy(fopath, fd_path)
 
 
