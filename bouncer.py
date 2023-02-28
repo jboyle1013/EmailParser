@@ -31,7 +31,12 @@ def makebatches(tf):
     folder_names = [f.name for f in os.scandir(directory) if f.is_dir()]
     # sort the folder names in alphabetical order
     folder_names.sort()
-    sublists = {}
+    sublists = {
+        "a-g" : [],
+        "h-n" : [],
+        "o-u" : [],
+        "v-z" : [],
+    }
 
     for name in folder_names:
         first_letter = name[0].lower()
@@ -52,7 +57,6 @@ def makebatches(tf):
     for list in sublists.keys():
         print(f"Inboxes {list} being parsed:")
         for names in sublists.get(list):
-            print(f"Inboxes {name} being parsed:")
             dir_name = directory + "/" + names
             fsetup = "/root/email-analysis-data/new-emails" + "/" + names + "/"
             if not os.path.exists( fsetup ):  # Does the Directory already path exist?
@@ -67,11 +71,11 @@ def makebatches(tf):
                 file_str = str(file.name)  # Turns the name of the entry to a string
                 origpath = dir_name + "/" + file_str
                 shutil.move(origpath, distpath)
-        emailparser(tf)
-        for file in sorted(os.scandir(distpath), key=lambda e: e.name):
-            ndistpath = f"/root/email-analysis-data/btest/processed-emails/{names}/"
-            if not os.path.exists( ndistpath ):  # Does the Directory already path exist?
-                os.mkdir( ndistpath)  # Make directory path
-            file_str = str(file.name)  # Turns the name of the entry to a string
-            norigpath = distpath + file_str
-            shutil.move(norigpath, ndistpath)
+            emailparser(tf)
+            for file in sorted(os.scandir(distpath), key=lambda e: e.name):
+                ndistpath = f"/root/email-analysis-data/btest/processed-emails/{names}/"
+                if not os.path.exists( ndistpath ):  # Does the Directory already path exist?
+                    os.mkdir( ndistpath)  # Make directory path
+                file_str = str(file.name)  # Turns the name of the entry to a string
+                norigpath = distpath + file_str
+                shutil.move(norigpath, ndistpath)
