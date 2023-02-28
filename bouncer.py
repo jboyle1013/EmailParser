@@ -46,7 +46,7 @@ def makebatches(tf):
             for file in sorted(os.scandir(dir_name), key=lambda e: e.name):
                 file_str = str(file.name)  # Turns the name of the entry to a string
                 origpath = dir_name + "/" + file_str
-                shutil.copy(origpath, distpath)
+                shutil.move(origpath, distpath)
         emailparser(tf)
         for names in sublists.get(list):
             distpath = "/root/email-analysis-data/new-emails" + "/" + names + "/new/"
@@ -66,3 +66,13 @@ def makebatches(tf):
                     os.rmdir( fpath)  # remove directory path
             if os.path.exists( fsetup ): # Does the Directory already path exist?
                 os.rmdir( fsetup)  # remove directory path
+
+    for name in folder_names:
+        fsetup = "//email-analysis-data/new-emails" + "/" + name + "/"
+        foptions = ["new", "cur", "temp"]
+        for opt in foptions:
+            fpath = fsetup + opt + "/"
+            if os.path.exists(fpath):  # Does the Directory already path exist?
+                shutil.rmtree(fpath)  # remove directory path
+        if os.path.exists(fsetup):  # Does the Directory already path exist?
+            shutil.rmtree(fsetup)  # remove directory path
