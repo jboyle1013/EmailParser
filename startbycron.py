@@ -1,8 +1,8 @@
 from emailparser import emailparser
 from bouncer import makebatches
 
-def startbycron():
-    makebatches(False)
+def startbycron(tf):
+    makebatches(tf)
 
 
 
