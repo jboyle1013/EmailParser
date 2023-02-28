@@ -69,7 +69,7 @@ def makebatches(tf):
                 shutil.move(origpath, distpath)
         emailparser(tf)
         for file in sorted(os.scandir(distpath), key=lambda e: e.name):
-            ndistpath = f"/root/email-analysis-data/btest/processed-emails{names}/"
+            ndistpath = f"/root/email-analysis-data/btest/processed-emails/{names}/"
             if not os.path.exists( ndistpath ):  # Does the Directory already path exist?
                 os.mkdir( ndistpath)  # Make directory path
             file_str = str(file.name)  # Turns the name of the entry to a string
