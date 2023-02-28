@@ -1,4 +1,3 @@
-import os
 import shutil
 from emailparser import *
 # The purpose of these functions is to control how many emails enter the parser at any given time
@@ -27,7 +26,7 @@ def makebatchest(tf):
 
 
 def makebatches(tf):
-    directory = "/root/email-analysis-data/btest/new-emails"
+    directory = "//email-analysis-data/new-emails"
     folder_names = [f.name for f in os.scandir(directory) if f.is_dir()]
     # sort the folder names in alphabetical order
     folder_names.sort()
@@ -75,7 +74,7 @@ def makebatches(tf):
         for names in sublists.get(list):
             distpath = "/root/email-analysis-data/new-emails" + "/" + names + "/new/"
             for file in sorted(os.scandir(distpath), key=lambda e: e.name):
-                ndistpath = f"/root/email-analysis-data/btest/processed-emails/{names}/"
+                ndistpath = f"//email-analysis-data/processed-emails/{names}/"
                 if not os.path.exists( ndistpath ):  # Does the Directory already path exist?
                     os.mkdir( ndistpath)  # Make directory path
                 file_str = str(file.name)  # Turns the name of the entry to a string
