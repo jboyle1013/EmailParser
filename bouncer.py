@@ -61,7 +61,7 @@ def makebatches(tf):
                 if not os.path.exists( fpath ): # Does the Directory already path exist?
                     os.mkdir( fpath)  # Make directory path
             distpath = "/root/email-analysis-data/new-emails" + "/" + names + "/new/"
-            for file in sorted(os.scandir(directory), key=lambda e: e.name):
+            for file in sorted(os.scandir(dir_name), key=lambda e: e.name):
                 file_str = str(file.name)  # Turns the name of the entry to a string
                 origpath = dir_name + "/" + file_str
                 shutil.move(origpath, distpath)
