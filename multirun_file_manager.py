@@ -11,24 +11,19 @@ def file_reset(directory):
                          key=lambda e: e.name ):  # This is looping through each file in the directory above
 
         '''These line are for getting the Inbox Identifier from the filename'''
-        file_str = str( entry.name )
-        n_str = file_str.split( "." )[0]
-        if "INBOX" not in n_str:
-            name = n_str.split( "_" )[0]
-        else:
-            name = file_str.split( "." )[1]
-        '''This is where the number is set'''
+        name = str( entry.name )
+
         num = 1
         inbox_vals_list[name] = num
 
-    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/inbox_vals.json", "w", encoding="utf-8" )  # opening json file for writing
+    datafile = open( "/root/EmailParser/In-Process-JSONS/inbox_vals.json", "w", encoding="utf-8" )  # opening json file for writing
     json.dump( inbox_vals_list, datafile, indent=4 )  # printing data in nice format to file
     datafile.close()  # closing file
 
 
 def file_getcount(inbox):
     '''These lines read in the values.'''
-    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/inbox_vals.json", "r", encoding="utf-8" )
+    datafile = open( "/root/EmailParser/In-Process-JSONS/inbox_vals.json", "r", encoding="utf-8" )
     inbox_sizes = json.load( datafile )
     datafile.close()
     if inbox in inbox_sizes.keys():  # Was the inbox in the last run?
@@ -42,7 +37,7 @@ def file_getcount(inbox):
 def file_getruncount():
     '''This function returns the number of times the parser has run.'''
 
-    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/inbox_vals.json", "r", encoding="utf-8" )
+    datafile = open( "/root/EmailParser/In-Process-JSONS/inbox_vals.json", "r", encoding="utf-8" )
     inbox_sizes = json.load( datafile )
     datafile.close()
 
@@ -56,13 +51,8 @@ def file_idgen(directory):
                          key=lambda e: e.name ):  # This is looping through each file in the directory above
 
         '''These line are for getting the Inbox Identifier from the filename'''
-        file_str = str( entry.name )
-        n_str = file_str.split( "." )[0]
-        if "INBOX" not in n_str:
-            name = n_str.split( "_" )[0]
-        else:
-            name = file_str.split( "." )[1]
-        '''This is where the number is set'''
+        name = str( entry.name )
+
         id = ''.join( random.choice( string.ascii_uppercase +
                                      string.ascii_lowercase + string.digits ) for _ in range( 8 ) )
         if id not in inbox_id_list.items():
@@ -75,6 +65,6 @@ def file_idgen(directory):
                                              string.ascii_lowercase + string.digits ) for _ in range( 8 ) )
             inbox_id_list[name] = id
 
-    datafile = open( "/root/EmailParser/use-and-abuse/EmailParser/In-Process-JSONS/inbox_ids.json", "w", encoding="utf-8" )  # opening json file for writing
+    datafile = open( "/root/EmailParser/In-Process-JSONS/inbox_ids.json", "w", encoding="utf-8" )  # opening json file for writing
     json.dump( inbox_id_list, datafile, indent=4 )  # printing data in nice format to file
     datafile.close()  # closing file
