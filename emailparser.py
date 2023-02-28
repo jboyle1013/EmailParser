@@ -15,13 +15,14 @@ from bouncer import *
 the file_reset function.'''
 
 
-def emailparser():
+def emailparser(tf):
     queue = multiprocessing.Queue(-1) # The queue and the listener are for allowing the parser to use one log file.
     listener = multiprocessing.Process(target=listener_process, args=(queue, listener_configurer))
     listener.start()
     # creating thread
     directory = "/root/email-analysis-data/new-emails"
-    file_reset(directory)
+    if tf:
+        file_reset(directory)
     p1 = multiprocessing.Process(target=headers_loop, args=(directory, queue, worker_configurer,)) # Header Parsing Process
     p2 = multiprocessing.Process(target=message_content_loop, args=(directory, queue, worker_configurer,))    # Content Parsing Process
     p3 = multiprocessing.Process(target=links_loop, args=(directory, queue, worker_configurer,))  # Links Parsing Process

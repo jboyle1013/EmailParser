@@ -1,7 +1,7 @@
 from emailparser import emailparser
 
 def startbycron():
-    emailparser()
+    bouncer(False)
 
 
 
