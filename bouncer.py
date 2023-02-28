@@ -73,6 +73,7 @@ def makebatches(tf):
                 shutil.move(origpath, distpath)
         emailparser(tf)
         for names in sublists.get(list):
+            distpath = "/root/email-analysis-data/new-emails" + "/" + names + "/new/"
             for file in sorted(os.scandir(distpath), key=lambda e: e.name):
                 ndistpath = f"/root/email-analysis-data/btest/processed-emails/{names}/"
                 if not os.path.exists( ndistpath ):  # Does the Directory already path exist?
