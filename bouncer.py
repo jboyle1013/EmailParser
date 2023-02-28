@@ -51,6 +51,7 @@ def makebatches(tf):
 
     for list in sublists.keys():
         for names in sublists.get(list):
+            print(f"Inboxes {name} being parsed:")
             dir_name = directory + "/" + names
             fsetup = "/root/email-analysis-data/new-emails" + "/" + names + "/"
             if not os.path.exists( fsetup ):  # Does the Directory already path exist?
