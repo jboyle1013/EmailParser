@@ -64,6 +64,7 @@ def makebatches(tf):
                 norigpath = distpath + file_str
                 shutil.move(norigpath, ndistpath)
 
+            dir_name = directory + "/" + names
             fsetup = "/root/email-analysis-data/new-emails" + "/" + names + "/"
             foptions = ["new", "cur", "temp"]
             for opt in foptions:
@@ -73,10 +74,9 @@ def makebatches(tf):
             if os.path.exists( fsetup ): # Does the Directory already path exist?
                 os.rmdir( fsetup)  # remove directory path
             
-            if os.path.exists(fsetup):  # Does the Directory already path exist?
-                shutil.rmtree(fsetup)  # remove directory path
+
             try:
-                shutil.rmtree(fsetup)  # remove directory path
+                shutil.rmtree(dir_name)  # remove directory path
             except:
                 print("Deleting Files Not allowed from //email-analysis-data/new-emails/")
                 continue
