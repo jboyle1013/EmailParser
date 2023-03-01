@@ -43,7 +43,7 @@ def links_loop(directory, queue, configurer):
             logger.error( f"Inbox {name} is too large. Links Parsing Cannot Run." )
         else:
             logger.info(f"Links Process is working in Directory {name}")
-            for _, message in enumerate( mb ):  # Loops through messages in inbox
+            for _, message in enumerate(sorted(mb), key=lambda e: e.name):  # Loops through messages in inbox
 
                 linkdict = {"Website": [],
                             "Image": []}

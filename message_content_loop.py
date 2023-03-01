@@ -57,7 +57,7 @@ def message_content_loop(directory, queue, configurer):
 
             successful = False  # Part of precautionary measure for empty inboxes
             _ = 0  # Also part of precautionary measure for empty inboxes
-            for _, message in enumerate( mb ):  # Loops through messages in inbox
+            for _, message in enumerate(sorted(mb), key=lambda e: e.name):  # Loops through messages in inbox
                 q = f"\t\t{_+message_num}"  # Print value for keeping track of progress
                 print( q )  # Print Statement for keeping track of progress
                 successful, text = content_puller( _, message, message_num )  # Runs the Content Puller method
