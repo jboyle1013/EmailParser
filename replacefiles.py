@@ -18,7 +18,7 @@ def filereplacer():
                 shutil.move(fopath, fd_path)
             except:
                 pass
-        os.rmdir(dirpath)
+        
 
 
 def filereplacerbackup():
