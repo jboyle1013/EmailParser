@@ -67,12 +67,7 @@ def makebatches(tf):
             dir_name = directory + "/" + names
             fsetup = "/root/email-analysis-data/new-emails" + "/" + names + "/"
             foptions = ["new", "cur", "temp"]
-            for opt in foptions:
-                fpath = fsetup + opt + "/"
-                if os.path.exists( fpath ): # Does the Directory already path exist?
-                    os.rmdir( fpath)  # remove directory path
-            if os.path.exists( fsetup ): # Does the Directory already path exist?
-                os.rmdir( fsetup)  # remove directory path
+            shutil.rmtree(fsetup)
             
 
             try:
