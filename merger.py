@@ -104,9 +104,7 @@ def merger(queue, configurer):
         name = dicts.get( "Name" )  # Pulls name of Inbox Owner
         print( name )
         if name is None:  # Precaution to Skip final Total Count Dictionary
-            if not os.path.exists( f"/root/Processed-Data/Totals" ):
-                os.mkdir( f"/root/Processed-Data/Totals" )
-            datafile = open( f"/root/Processed-Data/Totals/totals.json", "w" )  # opening json file for writing
+            datafile = open( f"/root/Processed-Data/totals.json", "w" )  # opening json file for writing
             json.dump( dicts, datafile, indent=4, separators=(',', ': ') )  # printing data in nice format to file
             datafile.close()  # Closing File
         else:
@@ -123,10 +121,10 @@ def merger(queue, configurer):
                 "Number Of Messages": message_num
             }
 
-            if not os.path.exists( f"/root/Processed-Data/{name}/InboxInfo" ):  # Does the Directory already path exist?
-                os.mkdir( f"/root/Processed-Data/{name}/InboxInfo" )  # Make directory path
+            if not os.path.exists( f"/root/Processed-Data/{name}" ):  # Does the Directory already path exist?
+                os.mkdir( f"/root/Processed-Data/{name}" )  # Make directory path
 
-            filename = "/root/Processed-Data/" + name + "/InboxInfo/" + name + "info" + ".json"
+            filename = "/root/Processed-Data/" + name + "/" + name + "info" + ".json"
             with open( filename, "w" ) as datafile:  # opening json file for writing
                 json.dump( inboxinfo, datafile, indent=4,
                            separators=(',', ': ') )  # printing data in nice format to file
@@ -168,11 +166,12 @@ def merger(queue, configurer):
 
     for entry in sorted( os.scandir( f"/root/Processed-Data/" ), key=lambda e: e.name ):
         name = str( entry.name )
-        if name != "Totals":
+        if (name != "Totals") and (name != "totals.json"):
             num_messages = len( os.listdir( f"/root/Processed-Data/{name}/Messages" ) )
-
-            orig_num_messages = inbox_vals.get( name )
-            new_num_messages = num_messages
+            orig_num_messages = 0
+            if run_count > 0:
+                orig_num_messages = inbox_vals.get( name )
+            new_num_messages = num_messages + orig_num_messages
 
             inbox_vals[name] = new_num_messages
     run_count = inbox_vals.get( "Run Count" )

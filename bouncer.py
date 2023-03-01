@@ -46,8 +46,14 @@ def makebatches(tf):
             for file in sorted(os.scandir(dir_name), key=lambda e: e.name):
                 file_str = str(file.name)  # Turns the name of the entry to a string
                 origpath = dir_name + "/" + file_str
-                shutil.move(origpath, distpath)
+                try:
+                    shutil.move(origpath, distpath)
+                except:
+                    print("Moving Files Not Allowed from //email-analysis-data/new-emails/")
+                    shutil.copy(origpath, distpath)
+
         emailparser(tf)
+
         for names in sublists.get(list):
             distpath = "/root/email-analysis-data/new-emails" + "/" + names + "/new/"
             for file in sorted(os.scandir(distpath), key=lambda e: e.name):
@@ -66,3 +72,12 @@ def makebatches(tf):
                     os.rmdir( fpath)  # remove directory path
             if os.path.exists( fsetup ): # Does the Directory already path exist?
                 os.rmdir( fsetup)  # remove directory path
+            
+            if os.path.exists(fsetup):  # Does the Directory already path exist?
+                shutil.rmtree(fsetup)  # remove directory path
+            try:
+                shutil.rmtree(fsetup)  # remove directory path
+            except:
+                print("Deleting Files Not allowed from //email-analysis-data/new-emails/")
+                continue
+
