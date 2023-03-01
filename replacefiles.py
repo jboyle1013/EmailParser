@@ -9,18 +9,14 @@ def filereplacer():
     dest_name = "//email-analysis-data/new-emails"
     for folder in sorted(os.scandir(dir_name), key=lambda e: e.name):
         f_str = str(folder.name)  # Turns the name of the folder to a string
-        dirpath = dest_name + "/" + f_str
-        if not os.path.exists( dirpath ):  # Does the Directory already path exist?
-            os.mkdir( dirpath)  # Make directory path
+        destpath = dest_name + "/" + f_str
+        dirpath = dir_name + "/" + f_str
+        if not os.path.exists( destpath ):  # Does the Directory already path exist?
+            os.mkdir( destpath)  # Make directory path
         for file in sorted(os.scandir(dirpath), key=lambda e: e.name):
-            file_str = str(file.name)  # Turns the name of the file to a string
-            fd_path = dirpath + "/"
-            fopath = dir_name + "/" + f_str + "/" + file_str
-            try:
-                shutil.move(fopath, fd_path)
-            except:
-                pass
-        
+            f_name = str(file.name)
+            origpath = dirpath + "/" + f_name
+            shutil.move(origpath, destpath)
 
 
 def filereplacerbackup():
