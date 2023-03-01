@@ -42,7 +42,7 @@ def headers_loop(directory, queue, configurer):
         else:
             logger.info( f"Header Process is working in Directory {name}")
             final_num = 0
-            for _, message in enumerate(sorted(mb), key=lambda e: e.name):  # Loops through messages in inbox
+            for _, message in enumerate(mb):  # Loops through messages in inbox
 
 
                 print(_ + message_num)  # Used to keep track of progress

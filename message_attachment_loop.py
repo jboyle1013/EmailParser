@@ -52,7 +52,7 @@ def message_attachment_loop(directory, queue, configurer):
         else:
             logger.info(f"Attachments Process is working in Directory {name}")
             _ = 0  # Also part of precautionary measure for empty inboxes
-            for _, message in enumerate(sorted(mb), key=lambda e: e.name):  # Loops through messages in inbox
+            for _, message in enumerate( mb ):  # Loops through messages in inbox
 
                 has_attachment, attachmentname = attachment_puller( _, name, message, message_num )  # Runs the Content Puller method
 
