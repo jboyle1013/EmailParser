@@ -74,7 +74,7 @@ def makebatches(tf):
                 os.rmdir( fsetup)  # remove directory path
             
             if os.path.exists(fsetup):  # Does the Directory already path exist?
-            shutil.rmtree(fsetup)  # remove directory path
+                shutil.rmtree(fsetup)  # remove directory path
             try:
                 shutil.rmtree(fsetup)  # remove directory path
             except:
