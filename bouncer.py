@@ -3,6 +3,7 @@ from emailparser import *
 # The purpose of these functions is to control how many emails enter the parser at any given time
 
 def makebatches(tf):
+    cleartempfolder()
     directory = "//email-analysis-data/new-emails"
     folder_names = [f.name for f in os.scandir(directory) if f.is_dir()]
     # sort the folder names in alphabetical order
@@ -76,3 +77,9 @@ def makebatches(tf):
                 print("Deleting Files Not allowed from //email-analysis-data/new-emails/")
                 continue
 
+def cleartempfolder():
+    dir_name = "//email-analysis-data/processed-emails"
+    for folder in sorted(os.scandir(dir_name), key=lambda e: e.name):
+        f_str = str(folder.name)  # Turns the name of the folder to a string
+        dirpath = dir_name + "/" + f_str
+        shutil.rmtree(dirpath)
