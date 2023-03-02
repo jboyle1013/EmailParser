@@ -17,6 +17,7 @@ def filereplacer():
             f_name = str(file.name)
             origpath = dirpath + "/" + f_name
             shutil.move(origpath, destpath)
+        shutil.rmtree(destpath)
 
 
 def filereplacerbackup():

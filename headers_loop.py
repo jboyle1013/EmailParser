@@ -26,6 +26,7 @@ def headers_loop(directory, queue, configurer):
         mb = mailbox.Maildir(file_name, factory=BytesParser(policy=default).parse)  # Reading in mbox file
         mblen = len(mb)  # number of messages
         '''This sections checks for and handles multiple runs.'''
+
         if mblen == 0 and run_num == 0:
             message_num = 0
         elif run_num > 0:
@@ -44,7 +45,7 @@ def headers_loop(directory, queue, configurer):
             final_num = 0
             for _, message in enumerate(mb):  # Loops through messages in inbox
 
-
+                
                 print(_ + message_num)  # Used to keep track of progress
 
                 msg_list.append({"Number": _+message_num, "Headers": {}, "Content": {}})  # Creating empty dict
